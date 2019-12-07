@@ -39,7 +39,7 @@ public class TitleViewController : MonoBehaviour
         if(y < -5.0f){
             y += 0.1f;
         }
-            if (x > 5.0f)
+            if (y > 5.0f)
             {
                 y -= 0.1f;
             }
