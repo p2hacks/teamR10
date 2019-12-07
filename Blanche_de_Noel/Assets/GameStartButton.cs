@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class GameStartButton : MonoBehaviour
 {
+    GameObject titleImage;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        titleImage = GameObject.Find("TitleImage");
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(0, -5.0f, 0);
+        
+    }
+
+    public void turnMovementButton()
+    {
+
+        titleImage.GetComponent<TitleViewController>().turnMovementButton();
     }
 }
