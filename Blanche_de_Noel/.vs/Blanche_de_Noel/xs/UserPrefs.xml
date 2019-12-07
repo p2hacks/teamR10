@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{4246EA8D-75C6-4037-09A4-B1682FDE5CF3}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TitleView/Scripts/TitleImageTempController.cs">
+    <Files>
+      <File FileName="Assets/TitleView/Scripts/TitleImageTempController.cs" Line="26" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Blanche_de_Noel" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="TitleView" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="TitleImageTempController.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="42dbe796-9993-45b4-a2cd-041e6d2342fd" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
