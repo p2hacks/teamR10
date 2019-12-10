@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameStartButton : MonoBehaviour
+public class MessageTextController : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,10 @@ public class GameStartButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(0, -5.0f, 0);
+        
     }
+
+    // 引数で与えられたメッセージを表示する
+    public void DisplayMessage(string message) =>
+        GetComponent<Text>().text = message;
 }
