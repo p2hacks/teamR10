@@ -66,7 +66,7 @@
     <Compile Include="Assets\DayViewTemplate\Scripts\CanvasChoiceController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\DayController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\MessageTextController.cs" />
-    <Compile Include="Assets\GAMEMAIN.cs" />
+    <Compile Include="Assets\TitleView\Scripts\GAMEMAIN.cs" />
     <Compile Include="Assets\TitleView\Scripts\TitleImageTempController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/yutaro/Desktop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

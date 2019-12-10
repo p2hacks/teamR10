@@ -21,5 +21,5 @@ public class GAMEMAIN : MonoBehaviour
     }
 
     public static int GetKoukando() => koukando; //好感度のゲッター
-    public static void UpKoukando(int n) => koukando += n; //好感度のセッター//引数にどれだけ上がるかを渡す
+    public static void AddKoukando(int n) => koukando += n; //好感度のセッター//引数にどれだけ上がるかを渡す
 }
