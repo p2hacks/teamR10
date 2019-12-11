@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    int numOfDayPattern = 1;
+    int numOfDayPattern = 2;
 
 
     private int day = 23; //現在の日にち //25日に結果発表
@@ -25,6 +25,8 @@ public class DayController : MonoBehaviour
     private int turn = 0; //母親の発言や選択肢などをターン番号で区別する
     private int playerChoice = 0; //プレイヤーが選んだ選択肢を区別する
 
+    
+
     GameObject messageText;
     Button nextButton;
 
@@ -32,6 +34,9 @@ public class DayController : MonoBehaviour
     GameObject buttonChoice2;
     GameObject buttonChoice3;
     GameObject buttonChoice4;
+
+    
+    private object fadeImage;
 
 
     // Start is called before the first frame update
@@ -44,11 +49,13 @@ public class DayController : MonoBehaviour
         buttonChoice2 = GameObject.Find("Canvas/Button_choice2");
         buttonChoice3 = GameObject.Find("Canvas/Button_choice3");
         buttonChoice4 = GameObject.Find("Canvas/Button_choice4");
+        //panel = GameObject.Find("Canvas/Panel");
 
         buttonChoice1.SetActive(false);
         buttonChoice2.SetActive(false);
         buttonChoice3.SetActive(false);
         buttonChoice4.SetActive(false);
+        
 
         Debug.Log("day = " + day);
     }
@@ -65,7 +72,7 @@ public class DayController : MonoBehaviour
                     break;
 
                 case 1:
-                    DayPattern0();
+                    DayPattern1();
                     break;
 
                 default:
@@ -207,6 +214,8 @@ public class DayController : MonoBehaviour
 
     }
 
+    
+
     void DayPatternError()
     {
         SimpleMessage("【エラー】1日の流れパターンが割り当てられていません。randomPatternに異常あり");
@@ -251,6 +260,7 @@ public class DayController : MonoBehaviour
      * 
      */
 
+    // １日目
     void DayPattern0()
     {
         switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
@@ -293,4 +303,49 @@ public class DayController : MonoBehaviour
         }
 
     }
+
+    // ２日目
+    void DayPattern1()
+    {
+        switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
+        {
+            case 0:
+                SimpleMessage("2日目");
+                break;
+
+            case 1:
+                SimpleMessage("メッセージ表示テスト");
+                break;
+
+            case 2:
+                MessageAndChoice2("「部屋のそうじは終わったの？」", "はい", "いいえ");
+                break;
+
+            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+                if (playerChoice == 1)
+                {
+                    SimpleMessage("「じゃああとでおつかいお願いね。」");
+                    AddKoukando(1);
+                }
+                else if (playerChoice == 2)
+                {
+                    SimpleMessage("「早くやっておいで。」");
+                    AddKoukando(-1);
+                }
+                else
+                    SimpleMessage("【エラー】playerChoiceに異常あり");
+                break;
+
+            case 4:
+                NextDay();
+                break;
+
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+
+        }
+    }
+
+
 }
