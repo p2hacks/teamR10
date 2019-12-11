@@ -14,18 +14,17 @@ using UnityEngine.UI;
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    int numOfDayPattern = 2;
+    private static int numOfDayPattern = 3;
 
 
     private int day = 23; //現在の日にち //25日に結果発表
     const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
 
-    int randomPattern = 0; //次の1日パターンがランダムで選択される
+    int randomPattern; //次の1日パターンがランダムで選択される
+    int[] randomStore = {0,0,0};
 
-    private int turn = 0; //母親の発言や選択肢などをターン番号で区別する
-    private int playerChoice = 0; //プレイヤーが選んだ選択肢を区別する
-
-    
+    private int turn; //母親の発言や選択肢などをターン番号で区別する
+    private int playerChoice; //プレイヤーが選んだ選択肢を区別する
 
     GameObject messageText;
     Button nextButton;
@@ -54,6 +53,7 @@ public class DayController : MonoBehaviour
         
 
         Debug.Log("day = " + day);
+        Debug.Log("ランダムなパターン:" + randomPattern);
     }
 
 
@@ -69,6 +69,10 @@ public class DayController : MonoBehaviour
 
                 case 1:
                     DayPattern1();
+                    break;
+
+                case 2:
+                    DayPattern2();
                     break;
 
                 default:
@@ -196,6 +200,9 @@ public class DayController : MonoBehaviour
     }
 
     void AddKoukando(int i) => GAMEMAIN.AddKoukando(i); //好感度を引数分加える
+    void AddStudyKoukando(int i) => GAMEMAIN.AddStudyKoukando(i); //勉強パラメータを引数分加える
+    void AddGameKoukando(int i) => GAMEMAIN.AddGameKoukando(i); //ゲームパラメータを引数分加える
+    void AddSportKoukando(int i) => GAMEMAIN.AddSportKoukando(i); //勉強パラメータを引数分加える
 
     void NextDay() //一日の流れが終わり次の日に遷移する時に呼び出す
     {
@@ -206,7 +213,18 @@ public class DayController : MonoBehaviour
         playerChoice = 0;
         day++;
         Debug.Log("day = " + day);
+        randomStore[day-23] = randomPattern;
         randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
+        for(int i=0; i < numOfDayPattern; i++)
+        {
+            if(randomStore[i] == randomPattern)
+            {
+                randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
+            }
+
+        }
+        Debug.Log("ランダムなパターン:" + randomPattern);
+        
 
     }
 
@@ -256,17 +274,17 @@ public class DayController : MonoBehaviour
      * 
      */
 
-    // １日目
+    // １つめの行動パターン
     void DayPattern0()
     {
         switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
             case 0:
-                SimpleMessage("1日目");
+                SimpleMessage("パターン１");
                 break;
 
             case 1:
-                SimpleMessage("メッセージ表示テスト");
+                SimpleMessage("「おはよう。」");
                 break;
 
             case 2:
@@ -276,7 +294,76 @@ public class DayController : MonoBehaviour
             case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 if (playerChoice == 1)
                 {
-                    SimpleMessage("「じゃああとでおつかいお願いね。」");
+                    SimpleMessage("「じゃあ、おつかいお願いね。」");
+                    AddKoukando(1);
+                }
+                else if (playerChoice == 2)
+                {
+                    SimpleMessage("「早くやっておいで。」");
+                    AddKoukando(-1);
+                }
+                else
+                    SimpleMessage("【エラー】playerChoiceに異常あり");
+                break;
+
+
+            case 4:
+                SimpleMessage("「お母さんね、お出かけしてくるけど、お留守番お願いね。」");
+                
+                break;
+            case 5:
+                MessageAndChoice2("「いい子にして待っているのよ？」", "うん", "やだ");
+                break;
+
+            case 6:
+                //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+                if (playerChoice == 1)
+                {
+                    SimpleMessage("「帰りにお菓子買ってくるわね。」");
+                    AddKoukando(2);
+                }
+                else if (playerChoice == 2)
+                {
+                    SimpleMessage("「晩ご飯抜き。」");
+                    AddKoukando(-2);
+                }
+                else
+                    SimpleMessage("【エラー】playerChoiceに異常あり");
+                break;
+
+            case 7:
+                NextDay();
+                break;
+
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+
+        }
+
+    }
+
+    // ２つめの行動パターン
+    void DayPattern1()
+    {
+        switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
+        {
+            case 0:
+                SimpleMessage("パターン２");
+                break;
+
+            case 1:
+                SimpleMessage("「おはよう。」");
+                break;
+
+            case 2:
+                MessageAndChoice2("「おつかいは終わったの？」", "はい", "いいえ");
+                break;
+
+            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+                if (playerChoice == 1)
+                {
+                    SimpleMessage("「じゃあ、リビングの掃除お願いね。」");
                     AddKoukando(1);
                 }
                 else if (playerChoice == 2)
@@ -297,30 +384,29 @@ public class DayController : MonoBehaviour
                 break;
 
         }
-
     }
 
-    // ２日目
-    void DayPattern1()
+    // ３つめの行動パターン
+    void DayPattern2()
     {
         switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
-            case 0:
-                SimpleMessage("2日目");
-                break;
 
+            case 0:
+                SimpleMessage("パターン3");
+                break;
             case 1:
-                SimpleMessage("メッセージ表示テスト");
+                SimpleMessage("「おはよう。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「部屋のそうじは終わったの？」", "はい", "いいえ");
+                MessageAndChoice2("「リビングのそうじは終わったの？」", "はい", "いいえ");
+                
                 break;
-
             case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                if (playerChoice == 1)
+                if(playerChoice == 1)
                 {
-                    SimpleMessage("「じゃああとでおつかいお願いね。」");
+                    SimpleMessage("「頑張ったね」");
                     AddKoukando(1);
                 }
                 else if (playerChoice == 2)
@@ -330,9 +416,38 @@ public class DayController : MonoBehaviour
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
+
                 break;
 
             case 4:
+                MessageAndChoice3("「やること終わったし、好きなことしてなさい。」", "勉強", "外でサッカー", "部屋でゲーム");
+                break;
+
+            case 5: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+                if (playerChoice == 1)
+                {
+                    SimpleMessage("「頑張りなさい。」");
+                    AddStudyKoukando(1);
+                    AddKoukando(1);
+                }
+                else if (playerChoice == 2)
+                {
+                    SimpleMessage("「遅くならないようにね。」");
+                    AddKoukando(1);
+                    AddSportKoukando(1);
+                    
+                }
+                else if (playerChoice == 3)
+                {
+                    SimpleMessage("「ほどほどにね。」");
+                    AddKoukando(1);
+                    AddGameKoukando(1);
+                }
+                else
+                    SimpleMessage("【エラー】playerChoiceに異常あり");
+                break;
+
+            case 6:
                 NextDay();
                 break;
 
