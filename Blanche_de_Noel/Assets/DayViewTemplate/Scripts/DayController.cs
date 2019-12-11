@@ -35,9 +35,6 @@ public class DayController : MonoBehaviour
     GameObject buttonChoice3;
     GameObject buttonChoice4;
 
-    
-    private object fadeImage;
-
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +46,6 @@ public class DayController : MonoBehaviour
         buttonChoice2 = GameObject.Find("Canvas/Button_choice2");
         buttonChoice3 = GameObject.Find("Canvas/Button_choice3");
         buttonChoice4 = GameObject.Find("Canvas/Button_choice4");
-        //panel = GameObject.Find("Canvas/Panel");
 
         buttonChoice1.SetActive(false);
         buttonChoice2.SetActive(false);
@@ -346,6 +342,5 @@ public class DayController : MonoBehaviour
 
         }
     }
-
 
 }
