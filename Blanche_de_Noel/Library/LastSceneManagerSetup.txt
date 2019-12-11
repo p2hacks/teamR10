@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/DayViewTemplate/DayViewTemplate.unity
+- path: Assets/TitleView/TitleScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
