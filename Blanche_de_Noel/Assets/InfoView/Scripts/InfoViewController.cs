@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Info : MonoBehaviour
+public class InfoViewController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
