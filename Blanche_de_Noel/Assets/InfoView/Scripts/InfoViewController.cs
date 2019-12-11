@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleImageTempController : MonoBehaviour
+public class Info : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,13 +16,8 @@ public class TitleImageTempController : MonoBehaviour
     {
         
     }
-
-    public void GameStart()
+    public void ToTitle()
     {
-        SceneManager.LoadScene("DayViewTemplate");
-    }
-    public void ToInfo()
-    {
-        SceneManager.LoadScene("InfoScene");
+        SceneManager.LoadScene("TitleScene");
     }
 }
