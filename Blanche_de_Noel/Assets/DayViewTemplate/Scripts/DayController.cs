@@ -15,7 +15,7 @@ public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
     private static int numOfDayPattern = 3;
-
+    //public int dayCount = 0;
 
     private int day = 23; //現在の日にち //25日に結果発表
     const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
@@ -211,7 +211,8 @@ public class DayController : MonoBehaviour
 
         turn = 0;
         playerChoice = 0;
-        day++;
+        GAMEMAIN.SetDay(1); // 経過日数を１増やす
+        this.day++;
         Debug.Log("day = " + day);
         randomStore[day-23] = randomPattern;
         randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
@@ -277,6 +278,7 @@ public class DayController : MonoBehaviour
     // １つめの行動パターン
     void DayPattern0()
     {
+        
         switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
             case 0:

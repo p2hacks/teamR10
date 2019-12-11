@@ -9,7 +9,7 @@ public class GAMEMAIN : MonoBehaviour
     private static int gameKoukando = 0; // 主人公のゲームパラメータ
     private static int sportKoukando = 0; // 主人公のスポーツパラメータ
 
-    private static int day = 1; //
+    private static int day = 1; //　経過日数
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,9 @@ public class GAMEMAIN : MonoBehaviour
     {
         
     }
+
+    public static int GetDay() => day; // 経過日数のゲッター
+    public static void SetDay(int n) => day += n; // 経過日数のセッター
 
     public static int GetKoukando() => koukando; //好感度のゲッター
     public static void AddKoukando(int n) => koukando += n; //好感度のセッター//引数にどれだけ上がるかを渡す
