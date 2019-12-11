@@ -5,17 +5,25 @@ using UnityEngine.UI;
 
 /**
  *  1日の流れを管理するスクリプト
- *
  *  例えば、進むボタンが押されたら次のメッセージを表示するよう指示するなど
+ *  このコードの下側の「1日の流れ編集エリア」を編集する
+ *
+ *  **　それ以外の部分は絶対に書き換えないこと！　**
  */
 
 public class DayController : MonoBehaviour
 {
+    /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
+    int numOfDayPattern = 1;
+
+
+    private int day = 23; //現在の日にち //25日に結果発表
+    const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
+
+    int randomPattern = 0; //次の1日パターンがランダムで選択される
+
     private int turn = 0; //母親の発言や選択肢などをターン番号で区別する
-
     private int playerChoice = 0; //プレイヤーが選んだ選択肢を区別する
-
-    private int numberOfChoice = 0; //表示された選択肢の数
 
     GameObject messageText;
     Button nextButton;
@@ -41,46 +49,33 @@ public class DayController : MonoBehaviour
         buttonChoice2.SetActive(false);
         buttonChoice3.SetActive(false);
         buttonChoice4.SetActive(false);
+
+        Debug.Log("day = " + day);
     }
 
 
     // Update is called once per frame
-    /******************** void Update() 以外のコードは絶対に変更しないように！ ********************/
     void Update()
     {
-        switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
+        if(day != CHRISTMAS_DAY) //クリスマス前
+            switch (randomPattern) { //ランダムに決定された流れパターンによって切替をする
+
+                case 0:
+                    DayPattern0();
+                    break;
+
+                case 1:
+                    DayPattern0();
+                    break;
+
+                default:
+                    DayPatternError();
+                    break;
+                    
+            }
+        else //クリスマスの日の結果発表
         {
-            case 0:
-                SimpleMessage("1日目");
-                break;
-
-            case 1:
-                SimpleMessage("メッセージ表示テスト");
-                break;
-
-            case 2:
-                MessageAndChoice2("「今日の宿題は終わったの？」", "はい", "いいえ");
-                break;
-
-            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「じゃああとでおつかいお願いね。」");
-                    AddKoukando(1);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「早くやっておいで。」");
-                    AddKoukando(-1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-
+            ChristmasDayResult();
         }
     }
 
@@ -145,7 +140,86 @@ public class DayController : MonoBehaviour
         NextTurn();
     }
 
-    /*
+    // 単純に母親のメッセージを表示する
+    void SimpleMessage(string message) =>
+        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
+
+    // 母親のメッセージと、それに対する選択肢を2つ表示する
+    void MessageAndChoice2(string message, string c1, string c2)
+    {
+        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
+
+        buttonChoice1.SetActive(true);
+        buttonChoice2.SetActive(true);
+
+        buttonChoice1.GetComponentInChildren<Text>().text = c1;
+        buttonChoice2.GetComponentInChildren<Text>().text = c2;
+
+        DisableNextButton();
+    }
+
+    // 母親のメッセージと、それに対する選択肢を3つ表示する
+    void MessageAndChoice3(string message, string c1, string c2, string c3)
+    {
+        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
+
+        buttonChoice1.SetActive(true);
+        buttonChoice2.SetActive(true);
+        buttonChoice3.SetActive(true);
+
+        buttonChoice1.GetComponentInChildren<Text>().text = c1;
+        buttonChoice2.GetComponentInChildren<Text>().text = c2;
+        buttonChoice3.GetComponentInChildren<Text>().text = c3;
+
+        DisableNextButton();
+    }
+
+    // 母親のメッセージと、それに対する選択肢を4つ表示する
+    void MessageAndChoice3(string message, string c1, string c2, string c3, string c4)
+    {
+        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
+
+        buttonChoice1.SetActive(true);
+        buttonChoice2.SetActive(true);
+        buttonChoice3.SetActive(true);
+        buttonChoice4.SetActive(true);
+
+        buttonChoice1.GetComponentInChildren<Text>().text = c1;
+        buttonChoice2.GetComponentInChildren<Text>().text = c2;
+        buttonChoice3.GetComponentInChildren<Text>().text = c3;
+        buttonChoice4.GetComponentInChildren<Text>().text = c4;
+
+        DisableNextButton();
+    }
+
+    void AddKoukando(int i) => GAMEMAIN.AddKoukando(i); //好感度を引数分加える
+
+    void NextDay() //一日の流れが終わり次の日に遷移する時に呼び出す
+    {
+        //フェードアウト関連のコードをここにおく
+        //フェードアウト演出が終わるまで進むボタンをSetActive(false)にする
+
+        turn = 0;
+        playerChoice = 0;
+        day++;
+        Debug.Log("day = " + day);
+        randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
+
+    }
+
+    void DayPatternError()
+    {
+        SimpleMessage("【エラー】1日の流れパターンが割り当てられていません。randomPatternに異常あり");
+    }
+
+    void ChristmasDayResult()
+    {
+        SimpleMessage("クリスマスの日の結果発表");
+    }
+
+    /**************************************************
+     *　　　　　　　　　　1日の流れ編集エリア　　　　　　　　　*
+     **************************************************
      * 
      * アクションの生成テンプレート↓↓↓
      * これらの関数呼び出しの組み合わせで1日の流れを生成する
@@ -177,61 +251,46 @@ public class DayController : MonoBehaviour
      * 
      */
 
-    // 単純に母親のメッセージを表示する
-    void SimpleMessage(string message) =>
-        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
-
-    // 母親のメッセージと、それに対する選択肢を2つ表示する
-    void MessageAndChoice2(string message, string c1, string c2)
+    void DayPattern0()
     {
-        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
+        switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
+        {
+            case 0:
+                SimpleMessage("1日目");
+                break;
 
-        buttonChoice1.SetActive(true);
-        buttonChoice2.SetActive(true);
+            case 1:
+                SimpleMessage("メッセージ表示テスト");
+                break;
 
-        buttonChoice1.GetComponentInChildren<Text>().text = c1;
-        buttonChoice2.GetComponentInChildren<Text>().text = c2;
+            case 2:
+                MessageAndChoice2("「今日の宿題は終わったの？」", "はい", "いいえ");
+                break;
 
-        numberOfChoice = 2;
-        DisableNextButton();
+            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+                if (playerChoice == 1)
+                {
+                    SimpleMessage("「じゃああとでおつかいお願いね。」");
+                    AddKoukando(1);
+                }
+                else if (playerChoice == 2)
+                {
+                    SimpleMessage("「早くやっておいで。」");
+                    AddKoukando(-1);
+                }
+                else
+                    SimpleMessage("【エラー】playerChoiceに異常あり");
+                break;
+
+            case 4:
+                NextDay();
+                break;
+
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+
+        }
+
     }
-
-    // 母親のメッセージと、それに対する選択肢を3つ表示する
-    void MessageAndChoice3(string message, string c1, string c2, string c3)
-    {
-        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
-
-        buttonChoice1.SetActive(true);
-        buttonChoice2.SetActive(true);
-        buttonChoice3.SetActive(true);
-
-        buttonChoice1.GetComponentInChildren<Text>().text = c1;
-        buttonChoice2.GetComponentInChildren<Text>().text = c2;
-        buttonChoice3.GetComponentInChildren<Text>().text = c3;
-
-        numberOfChoice = 3;
-        DisableNextButton();
-    }
-
-    // 母親のメッセージと、それに対する選択肢を4つ表示する
-    void MessageAndChoice3(string message, string c1, string c2, string c3, string c4)
-    {
-        messageText.GetComponent<MessageTextController>().DisplayMessage(message);
-
-        buttonChoice1.SetActive(true);
-        buttonChoice2.SetActive(true);
-        buttonChoice3.SetActive(true);
-        buttonChoice4.SetActive(true);
-
-        buttonChoice1.GetComponentInChildren<Text>().text = c1;
-        buttonChoice2.GetComponentInChildren<Text>().text = c2;
-        buttonChoice3.GetComponentInChildren<Text>().text = c3;
-        buttonChoice4.GetComponentInChildren<Text>().text = c4;
-
-        numberOfChoice = 4;
-        DisableNextButton();
-    }
-
-    void AddKoukando(int i) => GAMEMAIN.AddKoukando(i);
-
 }
