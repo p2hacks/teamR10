@@ -18,6 +18,6 @@ public class InfoViewController : MonoBehaviour
     }
     public void ToTitle()
     {
-        SceneManager.LoadScene("TitleScene");
+        GameObject.Find("Gradation").GetComponent<GradationFadeController>().FadeScreenTo(3);
     }
 }
