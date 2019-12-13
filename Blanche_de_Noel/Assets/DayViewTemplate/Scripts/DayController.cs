@@ -14,14 +14,13 @@ using UnityEngine.UI;
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    private static int numOfDayPattern = 3;
-    //public int dayCount = 0;
+    private static int numOfDayPattern = 4;
 
     private int day = 23; //現在の日にち //25日に結果発表
     const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
 
     int randomPattern; //次の1日パターンがランダムで選択される
-    int[] randomStore = {0,0,0};
+    int[] randomStore = {0,0,0,0};
 
     private int turn; //母親の発言や選択肢などをターン番号で区別する
     private int playerChoice; //プレイヤーが選んだ選択肢を区別する
@@ -73,6 +72,10 @@ public class DayController : MonoBehaviour
 
                 case 2:
                     DayPattern2();
+                    break;
+
+                case 3:
+                    DayPattern3();
                     break;
 
                 default:
@@ -460,4 +463,43 @@ public class DayController : MonoBehaviour
         }
     }
 
+    // 4つ目の行動パターン
+    void DayPattern3()
+    {
+        switch(turn)
+        {
+            case 0:
+                SimpleMessage("パターン４");
+                break;
+
+            case 1:
+                SimpleMessage("「おはよう。」");
+                break;
+
+            case 2:
+                MessageAndChoice2("「お隣さんに回覧板持って行ってくれない？」", "いいよ", "やだ");
+                break;
+
+            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+                if (playerChoice == 1)
+                {
+                    SimpleMessage("「ありがとう。」");
+                    AddKoukando(1);
+                }
+                else if(playerChoice == 2)
+                {
+                    SimpleMessage("「えー。」");
+                    AddKoukando(-1);
+                }
+                else
+                    SimpleMessage("【エラー】playerChoiceに異常あり");
+                break;
+
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+        }
+    }
+
+    
 }
