@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{4246EA8D-75C6-4037-09A4-B1682FDE5CF3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TitleView/Scripts/GradationFadeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DayViewTemplate/Scripts/DayController.cs">
     <Files>
       <File FileName="Assets/TitleView/Scripts/GAMEMAIN.cs" Line="9" Column="48" />
-      <File FileName="Assets/DayViewTemplate/Scripts/DayController.cs" Line="217" Column="92" />
-      <File FileName="Assets/TitleView/Scripts/GradationFadeController.cs" Line="45" Column="54" />
-      <File FileName="Assets/TitleView/Scripts/TitleImageTempController.cs" Line="27" Column="45" />
-      <File FileName="Assets/InfoView/Scripts/InfoViewController.cs" Line="21" Column="9" />
+      <File FileName="Assets/DayViewTemplate/Scripts/DayController.cs" Line="217" Column="1" />
+      <File FileName="Assets/TitleView/Scripts/GradationFadeController.cs" />
+      <File FileName="Assets/TitleView/Scripts/TitleImageTempController.cs" />
+      <File FileName="Assets/InfoView/Scripts/InfoViewController.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,28 +13,25 @@
           <Node name="Blanche_de_Noel" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="DayViewTemplate" expanded="True">
-                <Node name="Scripts" expanded="True" />
+                <Node name="Scripts" expanded="True">
+                  <Node name="DayController.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="InfoView" expanded="True">
                 <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="TitleView" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="GradationFadeController.cs" selected="True" />
-                </Node>
+                <Node name="Scripts" expanded="True" />
               </Node>
             </Node>
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9224e208-acbe-4891-b575-f82eaa8d7d91" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f30aadfc-6a7f-48a0-8872-162b28d91ede" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
