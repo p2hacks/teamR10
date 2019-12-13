@@ -35,10 +35,22 @@ public class DayText : MonoBehaviour
             case 3:
                 dayshow.text = "3日目";
                 break;
-            case 4:
+
+            /*case 4:
                 dayshow.text = "4日目";
                 break;
 
+            case 5:
+                dayshow.text = "5日目";
+                break;
+
+            case 6:
+                dayshow.text = "6日目";
+                break;
+
+            case 7:
+                dayshow.text = "7日目";
+                break;*/
             default:
                 break;
 
