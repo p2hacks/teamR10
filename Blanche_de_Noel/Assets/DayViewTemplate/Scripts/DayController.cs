@@ -25,8 +25,23 @@ public class DayController : MonoBehaviour
     private int turn = 0; //母親の発言や選択肢などをターン番号で区別する
     private int playerChoice = 0; //プレイヤーが選んだ選択肢を区別する
 
+
+    float p_move = 0.0f;
+    float x = 0.0f;
+    
+    float fadeOpacity = 0.0f;
+    float snowOpacity = 0.0f;
+    public AudioClip presentSet;
+    
+
     GameObject messageText;
     Button nextButton;
+
+    GameObject Present;
+    GameObject Present_O;
+    GameObject PresentContain;
+    GameObject SnowEffect;
+    GameObject Fader;
 
     GameObject buttonChoice1;
     GameObject buttonChoice2;
@@ -45,10 +60,26 @@ public class DayController : MonoBehaviour
         buttonChoice3 = GameObject.Find("Canvas/Button_choice3");
         buttonChoice4 = GameObject.Find("Canvas/Button_choice4");
 
+
+        Present = GameObject.Find("PresentBox");
+        Present_O = GameObject.Find("PresentBox_O");
+        PresentContain = GameObject.Find("Benz");
+
+        Fader = GameObject.Find("Fader");
+        SnowEffect = GameObject.Find("Snow");
+        Material fade = Fader.GetComponent<Renderer>().material;
+        Material snow = SnowEffect.GetComponent<Renderer>().material;
+
+        fade.color = new Color(0.0f, 0.0f, 0.0f, fadeOpacity);
+        snow.color = new Color(0.0f, 0.0f, 0.0f, snowOpacity);
+
         buttonChoice1.SetActive(false);
         buttonChoice2.SetActive(false);
         buttonChoice3.SetActive(false);
         buttonChoice4.SetActive(false);
+
+        Present_O.SetActive(false);
+        PresentContain.SetActive(false);
 
         Debug.Log("day = " + day);
     }
@@ -192,6 +223,62 @@ public class DayController : MonoBehaviour
         DisableNextButton();
     }
 
+    void present_move(){
+        Present.gameObject.transform.Translate(0.0f, p_move, 0.0f);
+        Debug.Log("Presentのxは" + Present.transform.position.y);
+        if(Present.transform.position.y > 0.0f){
+            x = x + 0.001f;
+            p_move = p_move - x * x;
+        }else if(Present.transform.position.y < 0.0f){
+            p_move = 0.0f;
+            EnableNextButton();
+        }
+    }
+
+    void present_open(){
+        if(Present.transform.position.y < 2.0f){
+            Present.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
+        }else if(Present.transform.position.y >= 2.0f){
+            Present.SetActive(false);
+            Present_O.SetActive(true);
+            if(Present_O.transform.position.y >= 0.0f){
+                Present_O.gameObject.transform.Translate(0.0f, -0.2f, 0.0f);
+            }
+            EnableNextButton();
+        }
+    }
+    
+    void ChristmasDayFadeIn(){
+        messageText.SetActive(false);
+        if(snowOpacity <= 1.0f){
+            fadeOpacity = 1.0f;
+            SnowEffect.GetComponent<Renderer>().material.color = new Color(255, 255, 255, snowOpacity);
+            Fader.GetComponent<Renderer>().material.color = new Color(0, 0, 0, fadeOpacity);
+            snowOpacity = snowOpacity + 0.01f;
+        }else if(snowOpacity >= 1.0f){
+            snowOpacity = 1.0f;
+            EnableNextButton();
+        }
+    }
+
+    void ChristmasDayFadeOut(){
+        if((snowOpacity >= 0.0f)&&(fadeOpacity >= 0.0f)){
+            SnowEffect.GetComponent<Renderer>().material.color = new Color(255, 255, 255, snowOpacity);
+            Fader.GetComponent<Renderer>().material.color = new Color(0, 0, 0, fadeOpacity);
+            snowOpacity = snowOpacity - 0.01f;
+            fadeOpacity = fadeOpacity - 0.01f;
+        }else if((snowOpacity <= 0.0f)&&(fadeOpacity <= 0.0f)){
+            snowOpacity = 0.0f;
+            fadeOpacity = 0.0f;
+            EnableNextButton();
+        }
+    }
+
+    void present_contain(){
+        Present_O.SetActive(false);
+        
+    }
+
     void AddKoukando(int i) => GAMEMAIN.AddKoukando(i); //好感度を引数分加える
 
     void NextDay() //一日の流れが終わり次の日に遷移する時に呼び出す
@@ -214,7 +301,34 @@ public class DayController : MonoBehaviour
 
     void ChristmasDayResult()
     {
-        SimpleMessage("クリスマスの日の結果発表");
+        switch(turn){
+            case 0:
+                DisableNextButton();
+                ChristmasDayFadeIn();
+                break;
+            case 2:
+                DisableNextButton();
+                ChristmasDayFadeOut();
+                break;
+            case 3:
+                messageText.SetActive(true);
+                SimpleMessage("クリスマスプレゼントよ！");
+                break;
+            case 4:
+                DisableNextButton();
+                present_move();
+                break;
+            case 5:
+                DisableNextButton();
+                present_open();
+                break;
+            case 6:
+                SimpleMessage("ベンツだ！！");
+                break;
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+        }
     }
 
     /**************************************************
