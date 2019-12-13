@@ -63,7 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DayViewTemplate\Scripts\BackImageController.cs" />
+    <Compile Include="Assets\DayViewTemplate\Scripts\ChristmasResultController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\DayController.cs" />
+    <Compile Include="Assets\DayViewTemplate\Scripts\DayPatternController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\MessageTextController.cs" />
     <Compile Include="Assets\InfoView\Scripts\InfoViewController.cs" />
     <Compile Include="Assets\TitleView\Scripts\CanvasFadeController.cs" />
