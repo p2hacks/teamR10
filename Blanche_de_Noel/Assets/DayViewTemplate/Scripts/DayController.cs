@@ -8,7 +8,7 @@ using UnityEngine.UI;
  *  例えば、進むボタンが押されたら次のメッセージを表示するよう指示するなど
  *  このコードの下側の「1日の流れ編集エリア」を編集する
  *
- *  **　それ以外の部分は絶対に書き換えないこと！　**
+ *  **　指定された部分以外は絶対に書き換えないこと！　**
  */
 
 public class DayController : MonoBehaviour
@@ -24,6 +24,9 @@ public class DayController : MonoBehaviour
 
     private int turn = 0; //母親の発言や選択肢などをターン番号で区別する
     private int playerChoice = 0; //プレイヤーが選んだ選択肢を区別する
+
+    private int nextButtonEnableDelay = 0; //フェード演出後は進むボタンを一定時間押せなくする
+    private bool nextButtonEnableDelayTrigger = false;
 
     GameObject messageText;
     Button nextButton;
@@ -50,6 +53,8 @@ public class DayController : MonoBehaviour
         buttonChoice3.SetActive(false);
         buttonChoice4.SetActive(false);
 
+        GAMEMAIN.ResetKoukandoTrigger();
+
         Debug.Log("day = " + day);
     }
 
@@ -57,8 +62,9 @@ public class DayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(day != CHRISTMAS_DAY) //クリスマス前
-            switch (randomPattern) { //ランダムに決定された流れパターンによって切替をする
+        if(day != CHRISTMAS_DAY) //クリスマス前 ******************** 編集して良いエリア　ここから　↓
+            //ランダムに決定された流れパターンによって切替をする
+            switch (randomPattern) {
 
                 case 0:
                     DayPattern0();
@@ -76,13 +82,20 @@ public class DayController : MonoBehaviour
         else //クリスマスの日の結果発表
         {
             ChristmasDayResult();
-        }
+            Debug.Log("koukando = " + GAMEMAIN.GetKoukando());
+        } //****************************************************** 編集して良いエリア　ここまで　↑
+
+        NextButtonEnableDelay(); //フェード演出用
     }
 
 
     public int GetTurn() => turn; //現在のターンを渡すゲッター
 
-    public void NextTurn() => turn++; //進むボタンが押された時に次のターンに進む
+    public void NextTurn()
+    {
+        turn++; //進むボタンが押された時に次のターンに進む
+        GAMEMAIN.ResetKoukandoTrigger();
+    }
 
     public void DisableNextButton() => nextButton.interactable = false; //進むボタンを無効化する（選択肢の表示中など）
 
@@ -192,19 +205,46 @@ public class DayController : MonoBehaviour
         DisableNextButton();
     }
 
-    void AddKoukando(int i) => GAMEMAIN.AddKoukando(i); //好感度を引数分加える
+    void AddKoukando(int n)
+    {
+        GAMEMAIN.AddKoukando(n); //好感度を引数分加える
+    }
 
     void NextDay() //一日の流れが終わり次の日に遷移する時に呼び出す
     {
-        //フェードアウト関連のコードをここにおく
-        //フェードアウト演出が終わるまで進むボタンをSetActive(false)にする
+        //フェードアウト
+        GameObject.Find("Gradation").GetComponent<GradationFadeController>().FadeScreenTo(0);
 
-        turn = 0;
-        playerChoice = 0;
-        day++;
-        Debug.Log("day = " + day);
-        randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
+        //フェードアウト演出が終わるまで進むボタンをintaractableをfalseにする
+        NextButtonEnableDelayTrigger();
 
+        if (GradationFadeController.GetFadeX() <= 0 && GradationFadeController.GetFadeX() >= -2.0)
+        {
+            playerChoice = 0;
+            randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
+            turn = 0;
+            day++;
+            Debug.Log("day = " + day);
+        }
+    }
+
+    void NextButtonEnableDelayTrigger()
+    {
+        nextButtonEnableDelayTrigger = true;
+        DisableNextButton();
+    }
+
+    void NextButtonEnableDelay()
+    {
+        if (nextButtonEnableDelayTrigger)
+            nextButtonEnableDelay++;
+
+        if (nextButtonEnableDelay >= 90)
+        {
+            EnableNextButton();
+            nextButtonEnableDelay = 0;
+            nextButtonEnableDelayTrigger = false;
+        }
     }
 
     void DayPatternError()

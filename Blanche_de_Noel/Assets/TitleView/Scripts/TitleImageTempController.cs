@@ -21,4 +21,9 @@ public class TitleImageTempController : MonoBehaviour
     {
         SceneManager.LoadScene("DayViewTemplate");
     }
+
+    public void ToInfo()
+    {
+        SceneManager.LoadScene("InfoScene");
+    }
 }

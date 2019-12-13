@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DayViewTemplate/DayViewTemplate.unity
     guid: 70e4356aad59246fe91c445f0e967223
+  - enabled: 1
+    path: Assets/InfoView/InfoScene.unity
+    guid: 53dad68458cb55146942be7cb04a74da
   m_configObjects: {}

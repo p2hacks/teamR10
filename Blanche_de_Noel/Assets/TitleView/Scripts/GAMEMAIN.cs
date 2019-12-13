@@ -6,20 +6,29 @@ public class GAMEMAIN : MonoBehaviour
 {
     private static int koukando = 0; //好感度のパラメータ
 
-    private static int day = 1; //
+    private static bool koukandoTrigger = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this); //シーンが変わってもこのスクリプトを消さずにアクセスできるようにする
+
     }
 
     // Update is called once per frame
-    void Update()
+    private static void Update()
     {
         
     }
 
     public static int GetKoukando() => koukando; //好感度のゲッター
-    public static void AddKoukando(int n) => koukando += n; //好感度のセッター//引数にどれだけ上がるかを渡す
+    public static void AddKoukando(int n)
+    {
+        if (koukandoTrigger)
+        {
+            koukando += n; //好感度のセッター//引数にどれだけ上がるかを渡す
+            koukandoTrigger = false;
+        }
+    }
+
+    public static void ResetKoukandoTrigger() => koukandoTrigger = true;
 }
