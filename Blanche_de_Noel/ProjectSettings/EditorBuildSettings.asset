@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DifficultyLevelView/DifficultyLevelView.unity
     guid: 47300111593c64ca98dd7e76b999b4cc
+  - enabled: 1
+    path: Assets/ResultView/ResultScene.unity
+    guid: 3c246139941304750b71591fd03983aa
   m_configObjects: {}
