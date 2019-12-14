@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{4246EA8D-75C6-4037-09A4-B1682FDE5CF3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TitleView/Scripts/GAMEMAIN.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ResultView/ResultStar2Scene/Scripts/ResultStar2Controller.cs">
     <Files>
-      <File FileName="Assets/ResultView/Scripts/ResultSceneController.cs" Line="318" Column="14" />
-      <File FileName="Assets/TitleView/Scripts/GAMEMAIN.cs" Line="7" Column="37" />
+      <File FileName="Assets/ResultView/ResultStar0Scene/Scripts/ResultStar0Controller.cs" Line="28" Column="32" />
+      <File FileName="Assets/ResultView/ResultStar1Scene/Scripts/ResultStar1Controller.cs" Line="7" Column="25" />
+      <File FileName="Assets/ResultView/ResultStar2Scene/Scripts/ResultStar2Controller.cs" Line="7" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,12 +20,21 @@
                 <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="ResultView" expanded="True">
+                <Node name="ResultStar0Scene" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="ResultStar1Scene" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="ResultStar2Scene" expanded="True">
+                  <Node name="Scripts" expanded="True">
+                    <Node name="ResultStar2Controller.cs" selected="True" />
+                  </Node>
+                </Node>
                 <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="TitleView" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="GAMEMAIN.cs" selected="True" />
-                </Node>
+                <Node name="Scripts" expanded="True" />
               </Node>
             </Node>
           </Node>
