@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 1133875351}
   - component: {fileID: 1133875350}
   m_Layer: 0
-  m_Name: ResultStar4Controller
+  m_Name: ResultStar2Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1133875349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e7924c2824f442ab5d6792415371fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 12a93f9c2e36c4f139c6569d5378042e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1133875351
