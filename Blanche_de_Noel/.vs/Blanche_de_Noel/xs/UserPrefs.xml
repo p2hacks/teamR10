@@ -1,10 +1,12 @@
 ﻿<Properties StartupConfiguration="{4246EA8D-75C6-4037-09A4-B1682FDE5CF3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DayViewTemplate/Scripts/ChristmasResultController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TitleView/Scripts/GradationFadeController.cs">
     <Files>
       <File FileName="Assets/DayViewTemplate/Scripts/DayPatternController.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="Assets/DifficultyLevelView/Scripts/ChooseDifficultyController.cs" Line="45" Column="6" />
-      <File FileName="Assets/ResultView/Scripts/ResultSceneController.cs" Line="12" Column="13" />
-      <File FileName="Assets/DayViewTemplate/Scripts/ChristmasResultController.cs" Line="1" Column="1" />
+      <File FileName="Assets/ResultView/Scripts/ResultSceneController.cs" Line="13" Column="58" />
+      <File FileName="Assets/DayViewTemplate/Scripts/ChristmasResultController.cs" Line="60" Column="52" />
+      <File FileName="Assets/TitleView/Scripts/GAMEMAIN.cs" Line="1" Column="1" />
+      <File FileName="Assets/TitleView/Scripts/GradationFadeController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,9 +14,7 @@
           <Node name="Blanche_de_Noel" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="DayViewTemplate" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="ChristmasResultController.cs" selected="True" />
-                </Node>
+                <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="DifficultyLevelView" expanded="True">
                 <Node name="Scripts" expanded="True" />
@@ -26,7 +26,9 @@
                 <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="TitleView" expanded="True">
-                <Node name="Scripts" expanded="True" />
+                <Node name="Scripts" expanded="True">
+                  <Node name="GradationFadeController.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
