@@ -35,7 +35,7 @@ public class DayController : MonoBehaviour
     private bool otukaiFlag; // おつかいイベントを発生させるか判定(フラグを回収したかどうか)
     private int otukaiDidFlag; // 正しくおつかいをしているか判定 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
 
-    public AudioClip SE;
+    public AudioClip SE, EveryDays;
     AudioSource audioSource;
     private bool SE_judge = true;
 
@@ -94,6 +94,7 @@ public class DayController : MonoBehaviour
         dayPatternController = GameObject.Find("DayPatternController").GetComponent<DayPatternController>();
 
         audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(EveryDays);
 
         christmasDayResult = GameObject.Find("ChristmasResultController").GetComponent<ChristmasResultController>();
         /**************** クリスマスの結果発表用 ******************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
@@ -196,6 +197,7 @@ public class DayController : MonoBehaviour
         }
         else //クリスマスの日の結果発表
         {
+            audioSource.Stop();
             ChristmasDayResult();
             Debug.Log("koukando = " + GAMEMAIN.GetKoukando());
         } //****************************************************** 編集して良いエリア　ここまで　↑

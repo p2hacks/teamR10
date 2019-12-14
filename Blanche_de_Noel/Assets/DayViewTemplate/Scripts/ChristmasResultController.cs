@@ -13,14 +13,15 @@ public class ChristmasResultController : MonoBehaviour
 
     float fadeOpacity = 0.0f;
     float snowOpacity = 0.0f;
-    public AudioClip presentSet;
-
     GameObject Present;
     GameObject Present_O;
     GameObject PresentContain;
     GameObject SnowEffect;
     GameObject Fader;
-
+    AudioSource audioSource;
+    public AudioClip ChristmasBGM, PresentPut;
+    bool BGM_judge = true;
+    bool SE_judge = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class ChristmasResultController : MonoBehaviour
 
         Present = GameObject.Find("PresentBox");
         Present_O = GameObject.Find("PresentBox_O");
-        //PresentContain = GameObject.Find("Benz");
+        audioSource = GetComponent<AudioSource>();
 
         Fader = GameObject.Find("Fader");
         SnowEffect = GameObject.Find("Snow");
@@ -65,6 +66,10 @@ public class ChristmasResultController : MonoBehaviour
         }
         else if (Present.transform.position.y < 0.0f)
         {
+            if(SE_judge){
+                audioSource.PlayOneShot(PresentPut);
+                SE_judge = false;
+            }
             p_move = 0.0f;
             EnableNextButton();
         }
@@ -128,6 +133,10 @@ public class ChristmasResultController : MonoBehaviour
         {
             case 0:
                 DisableNextButton();
+                if(BGM_judge){
+                    audioSource.PlayOneShot(ChristmasBGM);
+                    BGM_judge = false;
+                }
                 ChristmasDayFadeIn();
                 break;
             case 1:
