@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/TitleView/TitleScene.unity
+- path: Assets/ResultView/ResultStarScene/ResultStar0.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

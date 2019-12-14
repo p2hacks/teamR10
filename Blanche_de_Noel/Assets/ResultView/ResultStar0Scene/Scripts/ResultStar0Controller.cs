@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class ResultSceneController : MonoBehaviour
+public class ResultStar0Controller : MonoBehaviour
 {
-    
+
     SpriteRenderer SuperCar;
     SpriteRenderer PassNotice;
     SpriteRenderer Bill;
@@ -53,7 +53,7 @@ public class ResultSceneController : MonoBehaviour
         {
             SuperCar = GameObject.Find("SuperCar").GetComponent<SpriteRenderer>();
         }
-        else if(
+        else if (
             koukando > ChooseDifficultyController.difficultyBorder &&
             studyKoukando > ChooseDifficultyController.difficultyBorder &&
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
@@ -171,7 +171,6 @@ public class ResultSceneController : MonoBehaviour
            gameKoukando <= ChooseDifficultyController.difficultyBorder &&
            sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
-            SceneManager.LoadScene("ResultStar0");
             Doll = GameObject.Find("Doll").GetComponent<SpriteRenderer>();
         }
 

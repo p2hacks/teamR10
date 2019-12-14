@@ -71,6 +71,7 @@
     <Compile Include="Assets\DayViewTemplate\Scripts\MessageTextController.cs" />
     <Compile Include="Assets\DifficultyLevelView\Scripts\ChooseDifficultyController.cs" />
     <Compile Include="Assets\InfoView\Scripts\InfoViewController.cs" />
+    <Compile Include="Assets\ResultView\ResultStar0Scene\Scripts\ResultStar0Controller.cs" />
     <Compile Include="Assets\ResultView\Scripts\ResultSceneController.cs" />
     <Compile Include="Assets\TitleView\Scripts\CanvasFadeController.cs" />
     <Compile Include="Assets\TitleView\Scripts\GAMEMAIN.cs" />
