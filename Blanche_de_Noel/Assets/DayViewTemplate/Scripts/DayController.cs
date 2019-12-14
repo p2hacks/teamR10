@@ -21,7 +21,7 @@ public class DayController : MonoBehaviour
 
     //DayPatternController dayPatternController; //DayControllerが不安定な時の避難用
 
-    private int day = 23; //現在の日にち //25日に結果発表
+    private int day = 20; //現在の日にち //25日に結果発表
     const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
 
     int randomPattern = 0; //次の1日パターンがランダムで選択される
@@ -33,7 +33,7 @@ public class DayController : MonoBehaviour
     private bool nextButtonEnableDelayTrigger = false;
 
     private bool otukaiFlag; // おつかいイベントを発生させるか判定(フラグを回収したかどうか)
-    private bool otukaiDidFlag; // 正しくおつかいをしているか判定 false:買い物をいていないまたは、間違ったものを買った　true:正しいものを買った
+    private bool otukaiDidFlag; // 正しくおつかいをしているか判定 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
 
     GameObject messageText;
     Button nextButton;
@@ -111,27 +111,37 @@ public class DayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(day != CHRISTMAS_DAY) //クリスマス前 ******************** 編集して良いエリア　ここから　↓
-            //ランダムに決定された流れパターンによって切替をする
-            switch (randomPattern) {
-
-                case 0:
-                    DayPattern0();
-                    break;
-
-                case 1:
-                    DayPattern1();
-                    break;
-
-                case 2:
-                    DayPattern2();
-                    break;
-
-                default:
-                    DayPatternError();
-                    break;
-                    
+        if (day != CHRISTMAS_DAY) //クリスマス前 ******************** 編集して良いエリア　ここから　↓
+                                  //ランダムに決定された流れパターンによって切替をする
+        {
+            if (GAMEMAIN.GetDay() == 1)
+            {
+                DayPattern0();
             }
+            else
+            {
+                switch (randomPattern)
+                {
+
+                    case 0:
+                        DayPattern11();
+                        break;
+
+                    case 1:
+                        DayPattern12();
+                        break;
+
+                    case 2:
+                        DayPattern13();
+                        break;
+
+                    default:
+                        DayPatternError();
+                        break;
+
+                }
+            }
+        }
         else //クリスマスの日の結果発表
         {
             ChristmasDayResult();
@@ -143,6 +153,7 @@ public class DayController : MonoBehaviour
 
 
     public int GetTurn() => turn; //現在のターンを渡すゲッター
+    
 
     public void NextTurn()
     {
@@ -324,8 +335,8 @@ public class DayController : MonoBehaviour
         }
     }
 
-    void HideMotherImage() => motherImage.SetActive(false); //母親の画像が不要なときは非表示にする
-    void ShowMotherImage() => motherImage.SetActive(true); //非表示中の時に母親の画像を出現させたいときに呼び出す
+    public void HideMotherImage() => motherImage.SetActive(false); //母親の画像が不要なときは非表示にする
+    public void ShowMotherImage() => motherImage.SetActive(true); //非表示中の時に母親の画像を出現させたいときに呼び出す
 
     public void DayPatternError()
     {
@@ -488,32 +499,33 @@ public class DayController : MonoBehaviour
      */
 
     // １つめの行動パターン
-    void DayPattern0()
+    // 初日固定のイベント
+    public void DayPattern0()
     {
 
         switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
             case 0:
-                SimpleMessage("パターン１");
+                SimpleMessage("「おはよう！」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("「もうすぐクリスマスだね。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「今日の宿題は終わったの？」", "はい", "いいえ");
+                MessageAndChoice2("「いい子にしてないとサンタさん来ないわよ？」", "うん", "そんなの知らない");
                 break;
 
             case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 if (playerChoice == 1)
                 {
-                    SimpleMessage("「じゃあ、おつかいお願いね。」");
+                    SimpleMessage("「欲しいものがもらえるといいわね。」");
                     AddKoukando(1);
                 }
                 else if (playerChoice == 2)
                 {
-                    SimpleMessage("「早くやっておいで。」");
+                    SimpleMessage("「もー、この子ったら。」");
                     AddKoukando(-1);
                 }
                 else
@@ -533,7 +545,7 @@ public class DayController : MonoBehaviour
     }
 
     // ２つめの行動パターン
-    void DayPattern1()
+    public void DayPattern1()
     {
         switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
@@ -546,19 +558,20 @@ public class DayController : MonoBehaviour
                 break;
 
             case 2:
-                MessageAndChoice2("「今日は、おつかいでじゃがいもを買ってきてくれる？」", "いいよ", "やだ");
+                MessageAndChoice2("「宿題はやったの？」", "うん", "まだ");
                 break;
 
             case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 if (playerChoice == 1)
                 {
-                    SimpleMessage("「じゃあ、お願いね。」");
+                    SimpleMessage("「えらいね！！」");
                     AddKoukando(1);
                 }
                 else if (playerChoice == 2)
                 {
-                    SimpleMessage("「そのくらいやってくれてもいいじゃない。」");
+                    SimpleMessage("「早めにやっておきなさい。」");
                     AddKoukando(-1);
+                    AddStudyKoukando(1);
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -576,7 +589,7 @@ public class DayController : MonoBehaviour
     }
 
     // ３つめの行動パターン
-    void DayPattern2()
+    public void DayPattern2()
     {
 
         switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
@@ -625,7 +638,7 @@ public class DayController : MonoBehaviour
     }
 
     // 4つ目の行動パターン
-    void DayPattern3()
+    public void DayPattern3()
     {
         switch (turn)
         {
@@ -667,7 +680,7 @@ public class DayController : MonoBehaviour
     }
 
     // 5つめの行動パターン
-    void DayPattern4()
+    public void DayPattern4()
     {
         switch (turn)
         {
@@ -711,7 +724,7 @@ public class DayController : MonoBehaviour
     }
 
     // 6つめの行動パターン
-    void DayPattern5()
+    public void DayPattern5()
     {
         switch (turn)
         {
@@ -754,7 +767,7 @@ public class DayController : MonoBehaviour
     }
 
     // 7つめの行動パターン
-    void DayPattern6()
+    public void DayPattern6()
     {
         switch (turn)
         {
@@ -805,7 +818,7 @@ public class DayController : MonoBehaviour
     }
 
     // 8つめの行動パターン
-    void DayPattern7()
+    public void DayPattern7()
     {
         switch (turn)
         {
@@ -856,7 +869,7 @@ public class DayController : MonoBehaviour
     }
 
     // 9つめの行動パターン
-    void DayPattern8()
+    public void DayPattern8()
     {
         switch (turn)
         {
@@ -902,7 +915,7 @@ public class DayController : MonoBehaviour
     }
 
     // １０個目の行動パターン（この行動は母の登場はなし）
-    void DayPattern9()
+    public void DayPattern9()
     {
         switch (turn)
         {
@@ -932,7 +945,7 @@ public class DayController : MonoBehaviour
     }
 
     // 11個目の行動パターン（この行動は母の登場はなし）
-    void DayPattern10()
+    public void DayPattern10()
     {
         switch (turn)
         {
@@ -962,7 +975,7 @@ public class DayController : MonoBehaviour
     }
 
     // 12個目の行動パターン
-    void DayPattern11()
+    public void DayPattern11()
     {
         switch (turn)
         {
@@ -994,6 +1007,7 @@ public class DayController : MonoBehaviour
                 {
                     SimpleMessage("「そのくらいやってくれてもいいでしょ！。」");
                     otukaiFlag = false;
+                    otukaiDidFlag = false;
                     AddKoukando(-1);
 
                 }
@@ -1014,7 +1028,7 @@ public class DayController : MonoBehaviour
     }
 
     // おつかいイベント
-    void DayPattern12() // 母はこのパートには、登場しない
+    public void DayPattern12() // 母はこのパートには、登場しない
     {
         if ((otukaiFlag == true) && (otukaiDidFlag == false))
         {
@@ -1104,7 +1118,7 @@ public class DayController : MonoBehaviour
     }
 
     // おつかいで正しいものを買ったか判定する
-    void DayPattern13()
+    public void DayPattern13()
     {
         if ((otukaiFlag == true) && (otukaiDidFlag == true))
         {
@@ -1138,7 +1152,7 @@ public class DayController : MonoBehaviour
             switch (turn)
             {
                 case 0:
-                    SimpleMessage("おつかいイベントのフラグを回収できませんでした。");
+                    SimpleMessage("正しくおつかいをすることができませんでした。");
                     break;
                 case 1:
                     SimpleMessage("「今度、おつかい行っておいで。」");
