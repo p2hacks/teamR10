@@ -50,6 +50,11 @@ public class GradationFadeController : MonoBehaviour
                 SceneManager.LoadScene("DayViewTemplate");
                 isToScene = 0;
             }
+            else if (x <= 0.0f && x >= -2.0f && isToScene == 50)
+            {
+                SceneManager.LoadScene("ResultScene");
+                isToScene = 0;
+            }
 
 
             if (x <= -50.0f)
