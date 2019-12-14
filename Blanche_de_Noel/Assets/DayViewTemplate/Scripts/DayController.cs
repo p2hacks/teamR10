@@ -17,7 +17,7 @@ using UnityEngine.UI;
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    int numOfDayPattern = 9;
+    int numOfDayPattern = 10;
 
     //DayPatternController dayPatternController; //DayControllerが不安定な時の避難用
 

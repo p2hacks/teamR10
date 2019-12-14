@@ -96,11 +96,15 @@ public class DayPatternController : MonoBehaviour
                 {
                     SimpleMessage("「欲しいプレゼントがもらえるといいわね。」");
                     AddKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「もー、この子ったら。」");
                     AddKoukando(-1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else
                     SimpleMessage("【エラー】GetPlayerChoice()に異常あり");
@@ -141,12 +145,18 @@ public class DayPatternController : MonoBehaviour
                     SimpleMessage("「えらいね！！」");
                     AddKoukando(1);
                     AddStudyKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「早めにやっておきなさい。」");
                     AddKoukando(-1);
                     AddStudyKoukando(-1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -183,6 +193,9 @@ public class DayPatternController : MonoBehaviour
                     SimpleMessage("「頑張りなさい。」");
                     AddStudyKoukando(1);
                     AddKoukando(1);
+                    Debug.Log("母の好感度="+GAMEMAIN.GetKoukando());
+                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
+
                 }
                 else if (GetPlayerChoice() == 2)
                 {
@@ -190,12 +203,18 @@ public class DayPatternController : MonoBehaviour
                     AddKoukando(1);
                     AddSportKoukando(1);
 
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("スポーツパラメータ=" + GAMEMAIN.GetSportKoukando());
+
                 }
                 else if (GetPlayerChoice() == 3)
                 {
                     SimpleMessage("「ほどほどにね。」");
                     AddKoukando(1);
                     AddGameKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetSportKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -234,11 +253,15 @@ public class DayPatternController : MonoBehaviour
                 {
                     SimpleMessage("「ありがとう。」");
                     AddKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「えー。」");
                     AddKoukando(-1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else
                     SimpleMessage("【エラー】GetPlayerChoice()に異常あり");
@@ -277,11 +300,15 @@ public class DayPatternController : MonoBehaviour
                 {
                     SimpleMessage("「帰りにお菓子買ってくるわね。」");
                     AddKoukando(2);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「晩ご飯抜き。」");
                     AddKoukando(-2);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else
                     SimpleMessage("【エラー】GetPlayerChoice()に異常あり");
@@ -320,11 +347,15 @@ public class DayPatternController : MonoBehaviour
                 {
                     SimpleMessage("「ありがとう。」");
                     AddKoukando(2);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「もー。」");
                     AddKoukando(-1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -364,18 +395,27 @@ public class DayPatternController : MonoBehaviour
                     SimpleMessage("「うん！　その方がいいわよ。」");
                     AddKoukando(3);
                     AddStudyKoukando(3);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「馬鹿なの？」");
                     AddKoukando(-1);
                     AddSportKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("スポーツパラメータ=" + GAMEMAIN.GetSportKoukando());
                 }
                 else if (GetPlayerChoice() == 3)
                 {
                     SimpleMessage("「テストどうなっても、お母さん知らないわよ？」");
                     AddKoukando(-1);
                     AddGameKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -415,18 +455,27 @@ public class DayPatternController : MonoBehaviour
                     SimpleMessage("「外で体動かしたらいいのに。」");
                     AddKoukando(-1);
                     AddStudyKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「うん！　その方がいいわよ。」");
                     AddKoukando(3);
                     AddSportKoukando(3);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("スポーツパラメータ=" + GAMEMAIN.GetSportKoukando());
                 }
                 else if (GetPlayerChoice() == 3)
                 {
                     SimpleMessage("「外で体動かしたらいいのに。」");
                     AddKoukando(-1);
                     AddGameKoukando(1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -466,11 +515,15 @@ public class DayPatternController : MonoBehaviour
                     SimpleMessage("「ありがとう。」");
                     AddKoukando(1);
 
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「そのくらいやってくれてもいいでしょ！。」");
                     AddKoukando(-1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
 
                 }
 
@@ -492,6 +545,7 @@ public class DayPatternController : MonoBehaviour
     // １０個目の行動パターン（この行動は母の登場はなし）
     public void DayPattern9()
     {
+        dayController.HideMotherImage(); // 母の画像を隠す
         switch (GetTurn())
         {
             case 0:
@@ -507,6 +561,10 @@ public class DayPatternController : MonoBehaviour
                 AddGameKoukando(3);
                 AddStudyKoukando(-1);
                 AddSportKoukando(-1);
+
+                Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                Debug.Log("勉強パラメータ="+ GAMEMAIN.GetStudyKoukando());
+                Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
                 break;
 
             case 3:
@@ -522,6 +580,7 @@ public class DayPatternController : MonoBehaviour
     // 11個目の行動パターン（この行動は母の登場はなし）
     public void DayPattern10()
     {
+        dayController.HideMotherImage();
         switch (GetTurn())
         {
             case 0:
@@ -537,6 +596,10 @@ public class DayPatternController : MonoBehaviour
                 AddGameKoukando(-1);
                 AddStudyKoukando(3);
                 AddSportKoukando(-1);
+
+                Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
+                Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
                 break;
 
             case 3:
@@ -578,6 +641,8 @@ public class DayPatternController : MonoBehaviour
                     SetOtukaiDidFlag(0); // おつかいはまだしてない
                     AddKoukando(1);
 
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+
                 }
                 else if (GetPlayerChoice() == 2)
                 {
@@ -585,6 +650,8 @@ public class DayPatternController : MonoBehaviour
                     SetOtukaiFlag(false);
                     //SetOtukaiDidFlag(0);
                     AddKoukando(-1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
 
                 }
                 else
@@ -607,6 +674,8 @@ public class DayPatternController : MonoBehaviour
     // お店の画像に差し替えて欲しい
     public void DayPattern12() // 母はこのパートには、登場しない
     {
+        dayController.HideMotherImage(); // 母を画像を消す
+
         //otukaiDidFlag 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
         if ((GetOtukaiFlag() == true) && (GetOtukaiDidFlag() == 0))
         {
@@ -737,11 +806,15 @@ public class DayPatternController : MonoBehaviour
                     {
                         SimpleMessage("「ちゃんとジャガイモ買ってきてくれたのね!!」");
                         AddKoukando(5);
+
+                        Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                     }
                     else if (GetOtukaiDidFlag() == 1)
                     {
                         SimpleMessage("「頼んでいたものと違うじゃない!!」");
                         AddKoukando(-5);
+
+                        Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                     }
 
                     break;
@@ -767,6 +840,8 @@ public class DayPatternController : MonoBehaviour
                 case 1:
                     SimpleMessage("「今度、おつかい行っておいで。」");
                     AddKoukando(-1);
+
+                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                     break;
                 case 2:
                     NextDay();
