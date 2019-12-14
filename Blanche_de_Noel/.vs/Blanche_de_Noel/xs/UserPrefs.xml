@@ -1,7 +1,10 @@
 ﻿<Properties StartupConfiguration="{4246EA8D-75C6-4037-09A4-B1682FDE5CF3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TitleView/Scripts/GAMEMAIN.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DayViewTemplate/Scripts/DayText.cs">
     <Files>
       <File FileName="Assets/TitleView/Scripts/GAMEMAIN.cs" Line="1" Column="1" />
+      <File FileName="Assets/DayViewTemplate/Scripts/DayController.cs" Line="24" Column="25" />
+      <File FileName="Assets/DayViewTemplate/Scripts/DayPatternController.cs" Line="261" Column="10" />
+      <File FileName="Assets/DayViewTemplate/Scripts/DayText.cs" Line="53" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,7 +12,9 @@
           <Node name="Blanche_de_Noel" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="DayViewTemplate" expanded="True">
-                <Node name="Scripts" expanded="True" />
+                <Node name="Scripts" expanded="True">
+                  <Node name="DayText.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="DifficultyLevelView" expanded="True">
                 <Node name="Scripts" expanded="True" />
@@ -21,9 +26,7 @@
                 <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="TitleView" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="GAMEMAIN.cs" selected="True" />
-                </Node>
+                <Node name="Scripts" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -33,7 +36,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2e2a1fb6-9bf6-49a2-bf8e-66f9ad21daed" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ce6f1ac2-38b4-4072-a7b7-a05f6ca8312d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

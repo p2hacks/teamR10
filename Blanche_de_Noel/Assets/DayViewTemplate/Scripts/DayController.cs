@@ -17,11 +17,11 @@ using UnityEngine.UI;
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    int numOfDayPattern = 1;
+    int numOfDayPattern = 9;
 
     //DayPatternController dayPatternController; //DayControllerが不安定な時の避難用
 
-    private int day = 22; //現在の日にち //25日に結果発表
+    private int day = 15; //現在の日にち //25日に結果発表
     const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
 
     int randomPattern = 0; //次の1日パターンがランダムで選択される
@@ -121,13 +121,20 @@ public class DayController : MonoBehaviour
         {
             if (GAMEMAIN.GetDay() == 1)
             {
+                dayPatternController.DayPattern0();
+            }
+            else if(GAMEMAIN.GetDay() == 3)
+            {
                 dayPatternController.DayPattern11();
             }
-            else if(GAMEMAIN.GetDay() == 2)
+            else if (GAMEMAIN.GetDay() == 4)
             {
                 dayPatternController.DayPattern12();
             }
-
+            else if (GAMEMAIN.GetDay() == 5)
+            {
+                dayPatternController.DayPattern13();
+            }
             else
             {
                 Debug.Log("randomPattern"+randomPattern);
@@ -135,21 +142,44 @@ public class DayController : MonoBehaviour
                 {
 
                     case 0:
-                        dayPatternController.DayPattern13();
+                        dayPatternController.DayPattern1();
                         break;
 
-                    /*case 1:
-                        dayPatternController.DayPattern13();
+                    case 1:
+                        dayPatternController.DayPattern2();
                         break;
 
                     case 2:
-                        dayPatternController.DayPattern13();
+                        dayPatternController.DayPattern6();
                         break;
 
                     case 3:
-                        dayPatternController.DayPattern13();
-                        break;*/
+                        dayPatternController.DayPattern7();
+                        break;
 
+                    case 4:
+                        dayPatternController.DayPattern9();
+                        break;
+
+                    case 5:
+                        dayPatternController.DayPattern4();
+                        break;
+
+                    case 6:
+                        dayPatternController.DayPattern3();
+                        break;
+
+                    case 7:
+                        dayPatternController.DayPattern5();
+                        break;
+
+                    case 8:
+                        dayPatternController.DayPattern8();
+                        break;
+
+                    case 9:
+                        dayPatternController.DayPattern10();
+                        break;
 
                     default:
                         DayPatternError();
@@ -167,6 +197,7 @@ public class DayController : MonoBehaviour
         NextButtonEnableDelay(); //フェード演出用
     }
 
+    public int GetDay() => day; //現在の日にちを渡すゲッター
 
     public int GetTurn() => turn; //現在のターンを渡すゲッター
 

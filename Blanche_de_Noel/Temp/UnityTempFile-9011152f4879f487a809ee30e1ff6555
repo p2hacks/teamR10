@@ -302,5 +302,6 @@
 "Assets/InfoView/Scripts/InfoViewController.cs"
 "Assets/ResultView/Scripts/ResultSceneController.cs"
 "Assets/TitleView/Scripts/CanvasFadeController.cs"
+"Assets/TitleView/Scripts/GAMEMAIN.cs"
 "Assets/TitleView/Scripts/GradationFadeController.cs"
 "Assets/TitleView/Scripts/TitleImageTempController.cs"

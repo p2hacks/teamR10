@@ -296,6 +296,7 @@
 "Assets/DayViewTemplate/Scripts/ChristmasResultController.cs"
 "Assets/DayViewTemplate/Scripts/DayController.cs"
 "Assets/DayViewTemplate/Scripts/DayPatternController.cs"
+"Assets/DayViewTemplate/Scripts/DayText.cs"
 "Assets/DayViewTemplate/Scripts/MessageTextController.cs"
 "Assets/DifficultyLevelView/Scripts/ChooseDifficultyController.cs"
 "Assets/InfoView/Scripts/InfoViewController.cs"
