@@ -278,6 +278,7 @@ public class DayController : MonoBehaviour
             randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
             turn = 0;
             day++;
+            GAMEMAIN.SetDay(1);
             ShowBackImage(1); //シーンの最初には必ず自宅の背景が選ばれるようにする。別の場所で1日を始める場合は最初のターンでその背景をこの関数で呼び出す
             ShowMotherImage(); //シーンの最初には必ず母親の画像を表示する。不要なときは最初のターンでHideMotherImage()を呼び出す
             Debug.Log("day = " + day);
