@@ -51,6 +51,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar6");
             SuperCar = GameObject.Find("SuperCar").GetComponent<SpriteRenderer>();
         }
         else if(
@@ -59,6 +60,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar5");
             PassNotice = GameObject.Find("PassNotice").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -67,6 +69,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando <= ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar4");
             Bill = GameObject.Find("Bill").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -75,6 +78,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando <= ChooseDifficultyController.difficultyBorder &&
             sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar4");
             Akahon = GameObject.Find("Akahon").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -83,6 +87,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar5");
             VR = GameObject.Find("VR").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -91,6 +96,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar5");
             GamingPC = GameObject.Find("GamingPC").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -99,6 +105,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando <= ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar3");
             Uniform = GameObject.Find("Uniform").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -107,6 +114,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando <= ChooseDifficultyController.difficultyBorder &&
             sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar4");
             iPhone = GameObject.Find("iPhone").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -115,6 +123,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar3");
             PS4 = GameObject.Find("PS4").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -123,6 +132,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar3");
             Switch = GameObject.Find("Switch").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -131,6 +141,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando <= ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar5");
             Gun = GameObject.Find("Gun").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -139,6 +150,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando <= ChooseDifficultyController.difficultyBorder &&
             sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar1");
             Rasyomon = GameObject.Find("Rasyomon").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -147,6 +159,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar2");
             FamilyComputer = GameObject.Find("FamilyComputer").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -155,6 +168,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando > ChooseDifficultyController.difficultyBorder &&
             sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar0");
             Saku = GameObject.Find("Saku").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -163,6 +177,7 @@ public class ResultSceneController : MonoBehaviour
             gameKoukando <= ChooseDifficultyController.difficultyBorder &&
             sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
+            SceneManager.LoadScene("ResultStar1");
             SoccerBall = GameObject.Find("SoccerBall").GetComponent<SpriteRenderer>();
         }
         else if (
@@ -171,7 +186,7 @@ public class ResultSceneController : MonoBehaviour
            gameKoukando <= ChooseDifficultyController.difficultyBorder &&
            sportKoukando <= ChooseDifficultyController.difficultyBorder)
         {
-            SceneManager.LoadScene("ResultStar0");
+            SceneManager.LoadScene("ResultStar1");
             Doll = GameObject.Find("Doll").GetComponent<SpriteRenderer>();
         }
 
