@@ -10,13 +10,22 @@ public class ResultSceneController : MonoBehaviour
 
     GameObject blackBackGround;
 
+    private static int koukando = GAMEMAIN.GetKoukando(); //好感度のパラメータ
+    private static int studyKoukando = GAMEMAIN.GetStudyKoukando(); // 主人公の勉強パラメータ
+    private static int gameKoukando = GAMEMAIN.GetGameKoukando(); // 主人公のゲームパラメータ
+    private static int sportKoukando = GAMEMAIN.GetSportKoukando(); // 主人公のスポーツパラメータ
+
+
     int BackHideDelay = 0;
     bool isBackHideDelay = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (ChooseDifficultyController.difficultyBorder > 0)
+
+        blackBackGround = GameObject.Find("BlackBackground");
+
+        if (koukando > 0)
         {
             Saku = GameObject.Find("Saku");
             ResultSaku();
@@ -26,8 +35,6 @@ public class ResultSceneController : MonoBehaviour
             Switch = GameObject.Find("Switch");
             ResultSwitch();
         }
-
-        blackBackGround = GameObject.Find("BlackBackground");
 
 
     }
@@ -39,9 +46,10 @@ public class ResultSceneController : MonoBehaviour
 
         if (isBackHideDelay) BackHideDelay++;
 
-        if(BackHideDelay > 20) //20フレーム（0.33秒）たったら隠す画像を非アクティブにする
+        if(BackHideDelay > 30) //30フレーム（0.5秒）たったら隠す画像を非アクティブにする
         {
             blackBackGround.SetActive(false);
+            Debug.Log("setactive false");
             isBackHideDelay = false;
         }
     }
