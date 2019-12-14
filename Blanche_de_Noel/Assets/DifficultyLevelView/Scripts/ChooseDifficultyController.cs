@@ -39,4 +39,14 @@ public class ChooseDifficultyController : MonoBehaviour
         difficultyBorder = 5;
     }
 
+    public string GetDifficulty()
+    {
+        return difficulty;
+    }
+
+    public int GetDifficultyBorder()
+    {
+        return difficultyBorder;
+    }
+
 }
