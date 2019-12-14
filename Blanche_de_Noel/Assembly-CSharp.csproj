@@ -71,43 +71,50 @@
     <Compile Include="Assets\DayViewTemplate\Scripts\MessageTextController.cs" />
     <Compile Include="Assets\DifficultyLevelView\Scripts\ChooseDifficultyController.cs" />
     <Compile Include="Assets\InfoView\Scripts\InfoViewController.cs" />
+    <Compile Include="Assets\ResultView\ResultStar0Scene\Scripts\ResultStar0Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar1Scene\Scripts\ResultStar1Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar2Scene\Scripts\ResultStar2Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar3Scene\Scripts\ResultStar3Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar4Scene\Scripts\ResultStar4Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar5Scene\Scripts\ResultStar5Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar6Scene\Scripts\ResultStar6Controller.cs" />
     <Compile Include="Assets\ResultView\Scripts\ResultSceneController.cs" />
     <Compile Include="Assets\TitleView\Scripts\CanvasFadeController.cs" />
     <Compile Include="Assets\TitleView\Scripts\GAMEMAIN.cs" />
     <Compile Include="Assets\TitleView\Scripts\GradationFadeController.cs" />
     <Compile Include="Assets\TitleView\Scripts\TitleImageTempController.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/kaitokudou/Desktop/teamR10_develop/Blanche_de_Noel/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/Takumi/Desktop/develop/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/2019.2.15f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

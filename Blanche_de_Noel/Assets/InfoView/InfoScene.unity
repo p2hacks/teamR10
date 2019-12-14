@@ -193,6 +193,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278496503}
   m_CullTransparentMesh: 0
+--- !u!1 &414163074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414163075}
+  - component: {fileID: 414163077}
+  - component: {fileID: 414163076}
+  m_Layer: 5
+  m_Name: Info Background Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &414163075
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414163074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1039909288}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 60, y: 0}
+  m_SizeDelta: {x: 430, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &414163076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414163074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8396226, g: 0.6534799, b: 0.6684449, a: 0.37254903}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &414163077
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414163074}
+  m_CullTransparentMesh: 0
 --- !u!1 &586473483
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +400,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1806958286}
+  - {fileID: 414163075}
   - {fileID: 2107057555}
   - {fileID: 1758255037}
   m_Father: {fileID: 0}
@@ -500,7 +574,7 @@ GameObject:
   - component: {fileID: 1758255038}
   - component: {fileID: 1758255041}
   m_Layer: 5
-  m_Name: Button
+  m_Name: OK Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,7 +593,7 @@ RectTransform:
   m_Children:
   - {fileID: 278496504}
   m_Father: {fileID: 1039909288}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -593,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.75592804, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.75592804, a: 0.7058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -641,7 +715,7 @@ GameObject:
   - component: {fileID: 1806958287}
   - component: {fileID: 1806958289}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -726,7 +800,7 @@ GameObject:
   - component: {fileID: 2107057557}
   - component: {fileID: 2107057556}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Info Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,12 +818,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1039909288}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 366.6, y: 311.7}
+  m_AnchoredPosition: {x: 60, y: 0}
+  m_SizeDelta: {x: 430, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2107057556
 MonoBehaviour:
@@ -779,10 +853,10 @@ MonoBehaviour:
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30FB\u8AAC\u660E\n\u3053\u306E\u30B2\u30FC\u30E0\u306E\u76EE\u7684\u306F\u3001\u30AF\u30EA\u30B9\u30DE\u30B9\u306B\u826F\u3044\u30D7\u30EC\u30BC\u30F3\u30C8\u3092\u3082\u3089\u3046\u3053\u3068\u3067\u3059\u3002\n\u305D\u306E\u305F\u3081\u306B\u3001\u4E3B\u4EBA\u516C\uFF08\u3042\u306A\u305F\uFF09\u306F\u6BCD\u89AA\u306E\u3054\u6A5F\u5ACC\u3092\u53D6\u3089\u306A\u3051\u308C\u3070\u3044\u3051\u307E\u305B\u3093\uFF01\n\n\u6BCD\u89AA\u3068\u306E\u4F1A\u8A71\u3092\u901A\u3057\u3066\u9078\u629E\u80A2\u304C\u51FA\u3066\u304F\u308B\u306E\u3067\u3001\u6700\u3082\u6BCD\u89AA\u3092\u559C\u3070\u305B\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u3068\u601D\u3046\u3082\u306E\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044\uFF01\uFF01\n\n\u9078\u3093\u3060\u9078\u629E\u80A2\u306B\u3088\u3063\u3066\u6BCD\u89AA\u306E\u597D\u611F\u5EA6\u304C\u5909\u52D5\u3057\u3001\u305D\u308C\u306B\u5FDC\u3058\u305F\u30D7\u30EC\u30BC\u30F3\u30C8\u304C\u3082\u3089\u3048\u307E\u3059\uFF01"
+  m_Text: "\u8AAC\u660E\n\n\u3053\u306E\u30B2\u30FC\u30E0\u306E\u76EE\u7684\u306F\u3001\n\u30AF\u30EA\u30B9\u30DE\u30B9\u306B\u826F\u3044\u30D7\u30EC\u30BC\u30F3\u30C8\u3092\u3082\u3089\u3046\u3053\u3068\u3067\u3059\u3002\n\u305D\u306E\u305F\u3081\u306B\u3001\u4E3B\u4EBA\u516C\uFF08\u3042\u306A\u305F\uFF09\u306F\n\u6BCD\u89AA\u306E\u3054\u6A5F\u5ACC\u3092\u53D6\u3089\u306A\u3051\u308C\u3070\u3044\u3051\u307E\u305B\u3093\uFF01\n\n\u6BCD\u89AA\u3068\u306E\u4F1A\u8A71\u3092\u901A\u3057\u3066\u9078\u629E\u80A2\u304C\u51FA\u3066\u304F\u308B\u306E\u3067\u3001\n\u6700\u3082\u6BCD\u89AA\u3092\u559C\u3070\u305B\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u3068\n\u601D\u3046\u3082\u306E\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044\uFF01\uFF01\n\n\u9078\u3093\u3060\u9078\u629E\u80A2\u306B\u3088\u3063\u3066\u6BCD\u89AA\u306E\u597D\u611F\u5EA6\u304C\u5909\u52D5\u3057\u3001\n\u305D\u308C\u306B\u5FDC\u3058\u305F\u30D7\u30EC\u30BC\u30F3\u30C8\u304C\u3082\u3089\u3048\u307E\u3059\uFF01"
 --- !u!222 &2107057557
 CanvasRenderer:
   m_ObjectHideFlags: 0
