@@ -325,6 +325,8 @@ public class ResultStar6Controller : MonoBehaviour
     {
         alpha += 0.02f;
         SuperCar.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+
+        // GameObject.Find("SuperCar").GetComponent<RectTransform>().localPosition = new Vector3(80, 0, 0);
     }
 
     public void ResultPassNotice()
