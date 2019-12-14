@@ -28,7 +28,7 @@ public class ChristmasResultController : MonoBehaviour
 
         Present = GameObject.Find("PresentBox");
         Present_O = GameObject.Find("PresentBox_O");
-        PresentContain = GameObject.Find("Benz");
+        //PresentContain = GameObject.Find("Benz");
 
         Fader = GameObject.Find("Fader");
         SnowEffect = GameObject.Find("Snow");
@@ -39,7 +39,7 @@ public class ChristmasResultController : MonoBehaviour
         snow.color = new Color(0.0f, 0.0f, 0.0f, snowOpacity);
 
         Present_O.SetActive(false);
-        PresentContain.SetActive(false);
+        //PresentContain.SetActive(false);
     }
 
     // Update is called once per frame
