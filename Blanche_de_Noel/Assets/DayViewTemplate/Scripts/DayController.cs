@@ -362,8 +362,6 @@ public class DayController : MonoBehaviour
             ShowMotherImage(); //シーンの最初には必ず母親の画像を表示する。不要なときは最初のターンでHideMotherImage()を呼び出す
             Debug.Log("day = " + day);
         }
-        //GameObject.Find("Gradation").GetComponent<GradationFadeController>().SE_repeat();
-        Change_SE_judge();
     }
 
     public void NextButtonEnableDelayTrigger()
@@ -413,7 +411,7 @@ public class DayController : MonoBehaviour
         SimpleMessage("【エラー】1日の流れパターンが割り当てられていません。randomPatternに異常あり");
     }
 
-    private void Change_SE_judge()
+    public void Change_SE_judge()
     {
         SE_judge = true;
     }

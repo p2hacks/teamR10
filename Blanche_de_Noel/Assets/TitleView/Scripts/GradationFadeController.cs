@@ -11,10 +11,6 @@ public class GradationFadeController : MonoBehaviour
 
     private static int isToScene = 0; // 0:ゲーム中の日変わり演出　1:遊び方画面　2:ゲームスタート　3:タイトル画面
 
-    /*public AudioClip SE;
-    AudioSource audioSource;
-    private bool SE_judge = false;*/
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +21,12 @@ public class GradationFadeController : MonoBehaviour
             isAlreadyExist = true;
         }
 
-        //audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if(SE_judge)
-        {
-            audioSource.PlayOneShot(SE);
-            SE_judge = false;
-        }*/
 
         if (isFadeCalled)
         {
@@ -82,9 +73,5 @@ public class GradationFadeController : MonoBehaviour
 
     public static float GetFadeX() => x;
 
-    /*public void SE_repeat()
-    {
-        SE_judge = true;
-    }*/
 
 }

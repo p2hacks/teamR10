@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 544}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 494}
   m_MaxSize: {x: 14004, y: 14044}
   vertical: 0
-  controlID: 52
+  controlID: 121
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -311,20 +311,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/DayViewTemplate
+    - Assets/DayViewTemplate/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/DayViewTemplate
+  - Assets/DayViewTemplate/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Owner\Desktop\kudokai_merge\teamR10\Blanche_de_Noel
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 16.633503}
-    m_SelectedIDs: b43c0000
-    m_LastClickedID: 15540
-    m_ExpandedIDs: 00000000123b0000023c0000b43c0000c63d0000843e0000d83e0000ca3f0000cc3f000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 4a310000
+    m_LastClickedID: 12618
+    m_ExpandedIDs: 00000000542d0000802e00005e2f0000943000006e310000d4310000b4330000b633000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -352,7 +352,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000123b0000b43c0000843e0000d83e0000ca3f0000cc3f0000
+    m_ExpandedIDs: 00000000542d00005e2f00006e310000d4310000b4330000b6330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -437,9 +437,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1ed60000
-      m_LastClickedID: 54814
-      m_ExpandedIDs: 7276ffff2477ffffc27bffff7290ffffbe91ffff38b0ffff14c4ffff94c4ffffe0c4ffff60c5ffff1ed0fffffcd5ffff28d7ffffa4d8ffffe8dfffff96e2ffff08e4ffffd4e7ffff06e8ffff12edffff92efffffc6f0ffffacf2ffff56f5ffffa8f6ffffbe400000d84000002c48000042480000a6480000c0480000f84a00002a4b0000544b00001a54000034540000605500006a5500005859000082590000425e00006060000032620000626800007868000088680000ba720000d4720000f2720000fc7200001c730000e4730000fe73000080740000b8740000ee740000f8740000c47500007c7600004e840000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: e6bcffffdcebffff90f2ffffb4f7ffff7cf8ffff72fbfffff4ffffff3a37000068390000343e00003e3e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -499,9 +499,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 32.272644, y: 1.3748095, z: -17.828125}
+    m_Target: {x: 29.209375, y: 2.3187237, z: -18.141512}
     speed: 2
-    m_Value: {x: 32.272644, y: 1.3748095, z: -17.828125}
+    m_Value: {x: 29.209375, y: 2.3187237, z: -18.141512}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -534,9 +534,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 69.547745
+    m_Target: 72.67739
     speed: 2
-    m_Value: 69.547745
+    m_Value: 72.67739
   m_Ortho:
     m_Target: 1
     speed: 2
