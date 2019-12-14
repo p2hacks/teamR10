@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class ResultSceneController : MonoBehaviour
 {
-    GameObject Saku;
-    GameObject Switch;
+    SpriteRenderer Saku;
+    SpriteRenderer Switch;
+    SpriteRenderer SuperCar;
 
     GameObject blackBackGround;
+
+    private float alpha = 0.0f;
 
     private static int koukando = GAMEMAIN.GetKoukando(); //好感度のパラメータ
     private static int studyKoukando = GAMEMAIN.GetStudyKoukando(); // 主人公の勉強パラメータ
@@ -25,15 +29,13 @@ public class ResultSceneController : MonoBehaviour
 
         blackBackGround = GameObject.Find("BlackBackground");
 
-        if (koukando > 0)
+
+        if (koukando > ChooseDifficultyController.difficultyBorder &&
+            studyKoukando > ChooseDifficultyController.difficultyBorder &&
+            gameKoukando > ChooseDifficultyController.difficultyBorder &&
+            sportKoukando > ChooseDifficultyController.difficultyBorder)
         {
-            Saku = GameObject.Find("Saku");
-            ResultSaku();
-        }
-        else
-        {
-            Switch = GameObject.Find("Switch");
-            ResultSwitch();
+            SuperCar = GameObject.Find("SuperCar").GetComponent<SpriteRenderer>();
         }
 
 
@@ -46,22 +48,38 @@ public class ResultSceneController : MonoBehaviour
 
         if (isBackHideDelay) BackHideDelay++;
 
-        if(BackHideDelay > 30) //30フレーム（0.5秒）たったら隠す画像を非アクティブにする
+        if (BackHideDelay > 30) //30フレーム（0.5秒）たったら隠す画像を非アクティブにする
         {
             blackBackGround.SetActive(false);
             Debug.Log("setactive false");
             isBackHideDelay = false;
+
+            if (koukando > ChooseDifficultyController.difficultyBorder &&
+            studyKoukando > ChooseDifficultyController.difficultyBorder &&
+            gameKoukando > ChooseDifficultyController.difficultyBorder &&
+            sportKoukando > ChooseDifficultyController.difficultyBorder)
+            {
+                ResultSuperCar();
+            }
         }
+
+    }
+
+    public void ResultSuperCar()
+    {
+        alpha += 0.02f;
+        SuperCar.color = new Color(1.0f, 1.0f, 1.0f, alpha);
     }
 
     public void ResultSaku()
     {
-        Saku.gameObject.transform.Translate(0.0f, 0.0f, -20.0f);
+        alpha += 0.02f;
+        Saku.color = new Color(1.0f, 1.0f, 1.0f, alpha);
     }
 
     public void ResultSwitch()
     {
-        Switch.gameObject.transform.Translate(0.0f, 0.0f, -20.0f);
+        Switch.color = new Color(1.0f, 1.0f, 1.0f, alpha);
     }
 
     

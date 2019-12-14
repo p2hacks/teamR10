@@ -5,9 +5,9 @@ using UnityEngine;
 public class GAMEMAIN : MonoBehaviour
 {
     private static int koukando = 1; //好感度のパラメータ
-    private static int studyKoukando = 0; // 主人公の勉強パラメータ
-    private static int gameKoukando = 0; // 主人公のゲームパラメータ
-    private static int sportKoukando = 0; // 主人公のスポーツパラメータ
+    private static int studyKoukando = 1; // 主人公の勉強パラメータ
+    private static int gameKoukando = 1; // 主人公のゲームパラメータ
+    private static int sportKoukando = 1; // 主人公のスポーツパラメータ
     private static int day = 1; //　経過日数
     private static bool koukandoTrigger = false;
 
