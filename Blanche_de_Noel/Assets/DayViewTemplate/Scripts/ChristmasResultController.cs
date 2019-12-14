@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChristmasResultController : MonoBehaviour
 {
@@ -146,7 +147,9 @@ public class ChristmasResultController : MonoBehaviour
                 present_open();
                 break;
             case 5:
-                SimpleMessage("ベンツだ！！");
+                // SimpleMessage("ベンツだ！！");
+                // GameObject.Find("Gradation").GetComponent<GradationFadeController>().FadeScreenTo(50);
+                SceneManager.LoadScene("ResultScene");
                 break;
             default:
                 SimpleMessage("【エラー】このターンに何も割り当てられていません");
