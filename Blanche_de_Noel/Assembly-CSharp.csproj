@@ -67,6 +67,7 @@
     <Compile Include="Assets\DayViewTemplate\Scripts\ChristmasResultController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\DayController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\DayPatternController.cs" />
+    <Compile Include="Assets\DayViewTemplate\Scripts\DayText.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\MessageTextController.cs" />
     <Compile Include="Assets\DifficultyLevelView\Scripts\ChooseDifficultyController.cs" />
     <Compile Include="Assets\InfoView\Scripts\InfoViewController.cs" />

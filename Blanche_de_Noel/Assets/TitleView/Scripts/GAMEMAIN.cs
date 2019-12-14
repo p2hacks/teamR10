@@ -36,13 +36,34 @@ public class GAMEMAIN : MonoBehaviour
     }
 
     public static int GetStudyKoukando() => studyKoukando; //勉強パラメータのゲッター
-    public static void AddStudyKoukando(int n) => studyKoukando += n; //勉強パラメータのセッター//引数にどれだけ上がるかを渡す
+    public static void AddStudyKoukando(int n) //勉強パラメータのセッター//引数にどれだけ上がるかを渡す
+    {
+        if (koukandoTrigger)
+        {
+            studyKoukando += n;
+            koukandoTrigger = false;
+        }
+    }
 
     public static int GetGameKoukando() => gameKoukando; //　ゲームパラメータのゲッター
-    public static void AddGameKoukando(int n) => gameKoukando += n; //ゲームパラメータのセッター//引数にどれだけ上がるかを渡す
+    public static void AddGameKoukando(int n) //ゲームパラメータのセッター//引数にどれだけ上がるかを渡す
+    {
+        if (koukandoTrigger)
+        {
+            gameKoukando += n;
+            koukandoTrigger = false;
+        }
+    }
 
     public static int GetSportKoukando() => sportKoukando; // スポーツパラメータのゲッター
-    public static void AddSportKoukando(int n) => sportKoukando += n; // スポーツパラメータのセッター//引数にどれだけ上がるかを渡す
+    public static void AddSportKoukando(int n) //スポーツパラメータのセッター//引数にどれだけ上がるかを渡す
+    {
+        if (koukandoTrigger)
+        {
+            sportKoukando += n;
+            koukandoTrigger = false;
+        }
+    }
 
     public static void ResetKoukandoTrigger() => koukandoTrigger = true;
 }
