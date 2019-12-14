@@ -17,11 +17,11 @@ using UnityEngine.UI;
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    int numOfDayPattern = 3;
+    int numOfDayPattern = 1;
 
     //DayPatternController dayPatternController; //DayControllerが不安定な時の避難用
 
-    private int day = 20; //現在の日にち //25日に結果発表
+    private int day = 22; //現在の日にち //25日に結果発表
     const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
 
     int randomPattern = 0; //次の1日パターンがランダムで選択される
@@ -33,7 +33,7 @@ public class DayController : MonoBehaviour
     private bool nextButtonEnableDelayTrigger = false;
 
     private bool otukaiFlag; // おつかいイベントを発生させるか判定(フラグを回収したかどうか)
-    private bool otukaiDidFlag; // 正しくおつかいをしているか判定 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
+    private int otukaiDidFlag; // 正しくおつかいをしているか判定 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
 
     GameObject messageText;
     Button nextButton;
@@ -46,7 +46,10 @@ public class DayController : MonoBehaviour
     GameObject backController; //背景画像を入れ替えるスクリプト
     GameObject motherImage;
 
+
     ChristmasResultController christmasDayResult;
+    DayPatternController dayPatternController;
+
     /**************** クリスマスの結果発表用変数 ******************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
     float p_move = 0.0f;
     float x = 0.0f;
@@ -84,6 +87,8 @@ public class DayController : MonoBehaviour
         backController = GameObject.Find("Back_Controller");
         motherImage = GameObject.Find("MotherImage");
 
+        dayPatternController = GameObject.Find("DayPatternController").GetComponent<DayPatternController>();
+
         christmasDayResult = GameObject.Find("ChristmasResultController").GetComponent<ChristmasResultController>();
         /**************** クリスマスの結果発表用 ******************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
         Present = GameObject.Find("PresentBox");
@@ -116,24 +121,35 @@ public class DayController : MonoBehaviour
         {
             if (GAMEMAIN.GetDay() == 1)
             {
-                DayPattern0();
+                dayPatternController.DayPattern11();
             }
+            else if(GAMEMAIN.GetDay() == 2)
+            {
+                dayPatternController.DayPattern12();
+            }
+
             else
             {
+                Debug.Log("randomPattern"+randomPattern);
                 switch (randomPattern)
                 {
 
                     case 0:
-                        DayPattern11();
+                        dayPatternController.DayPattern13();
                         break;
 
-                    case 1:
-                        DayPattern12();
+                    /*case 1:
+                        dayPatternController.DayPattern13();
                         break;
 
                     case 2:
-                        DayPattern13();
+                        dayPatternController.DayPattern13();
                         break;
+
+                    case 3:
+                        dayPatternController.DayPattern13();
+                        break;*/
+
 
                     default:
                         DayPatternError();
@@ -153,12 +169,20 @@ public class DayController : MonoBehaviour
 
 
     public int GetTurn() => turn; //現在のターンを渡すゲッター
-    
+
+    public int GetPlayerChoice() => playerChoice;
+
+    public bool GetOtukaiFlag() => this.otukaiFlag;
+    public void SetOtukaiFlag(bool flag) => this.otukaiFlag = flag;
+
+    public int GetOtukaiDidFlag() => this.otukaiDidFlag;
+    public void SetOtukaiDidFlag(int n) => this.otukaiDidFlag = n;
 
     public void NextTurn()
     {
         turn++; //進むボタンが押された時に次のターンに進む
         GAMEMAIN.ResetKoukandoTrigger();
+        Debug.Log("NextTurn" + turn);
     }
 
     public void DisableNextButton() => nextButton.interactable = false; //進むボタンを無効化する（選択肢の表示中など）
@@ -378,6 +402,8 @@ public class DayController : MonoBehaviour
         //}
     }
 
+
+}
     /************************* クリスマスの結果発表用 ここから **************************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
     void present_move()
     {
@@ -498,674 +524,4 @@ public class DayController : MonoBehaviour
      * 
      */
 
-    // １つめの行動パターン
-    // 初日固定のイベント
-    public void DayPattern0()
-    {
-
-        switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
-        {
-            case 0:
-                SimpleMessage("「おはよう！」");
-                break;
-
-            case 1:
-                SimpleMessage("「もうすぐクリスマスだね。」");
-                break;
-
-            case 2:
-                MessageAndChoice2("「いい子にしてないとサンタさん来ないわよ？」", "うん", "そんなの知らない");
-                break;
-
-            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「欲しいものがもらえるといいわね。」");
-                    AddKoukando(1);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「もー、この子ったら。」");
-                    AddKoukando(-1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-
-        }
-
-    }
-
-    // ２つめの行動パターン
-    public void DayPattern1()
-    {
-        switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
-        {
-            case 0:
-                SimpleMessage("パターン２");
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-                break;
-
-            case 2:
-                MessageAndChoice2("「宿題はやったの？」", "うん", "まだ");
-                break;
-
-            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「えらいね！！」");
-                    AddKoukando(1);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「早めにやっておきなさい。」");
-                    AddKoukando(-1);
-                    AddStudyKoukando(1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-
-        }
-    }
-
-    // ３つめの行動パターン
-    public void DayPattern2()
-    {
-
-        switch (turn) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
-        {
-
-            case 0:
-                SimpleMessage("パターン３");
-                break;
-            case 1:
-                MessageAndChoice3("「とりあえず、好きなことやってきなさい。」", "勉強", "外でサッカー", "部屋でゲーム");
-                break;
-
-            case 2: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「頑張りなさい。」");
-                    AddStudyKoukando(1);
-                    AddKoukando(1);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「遅くならないようにね。」");
-                    AddKoukando(1);
-                    AddSportKoukando(1);
-
-                }
-                else if (playerChoice == 3)
-                {
-                    SimpleMessage("「ほどほどにね。」");
-                    AddKoukando(1);
-                    AddGameKoukando(1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                break;
-
-            case 3:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-
-        }
-    }
-
-    // 4つ目の行動パターン
-    public void DayPattern3()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン４");
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-                break;
-
-            case 2:
-                MessageAndChoice2("「お隣さんに回覧板持って行ってくれない？」", "いいよ", "やだ");
-                break;
-
-            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「ありがとう。」");
-                    AddKoukando(1);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「えー。」");
-                    AddKoukando(-1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // 5つめの行動パターン
-    public void DayPattern4()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン5");
-                break;
-
-            case 1:
-                SimpleMessage("「お母さんね、お出かけしてくるけど、お留守番お願いね。」");
-
-                break;
-            case 2:
-                MessageAndChoice2("「いい子にして待っているのよ？」", "うん", "やだ");
-                break;
-
-            case 3:
-                //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「帰りにお菓子買ってくるわね。」");
-                    AddKoukando(2);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「晩ご飯抜き。」");
-                    AddKoukando(-2);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // 6つめの行動パターン
-    public void DayPattern5()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン6");
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-                break;
-
-            case 2:
-                MessageAndChoice2("「玄関の掃除してくれない？」", "いいよ", "やだ");
-                break;
-
-            case 3:
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「ありがとう。」");
-                    AddKoukando(2);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「もー。」");
-                    AddKoukando(-1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // 7つめの行動パターン
-    public void DayPattern6()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン7");
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-                break;
-
-            case 2:
-                MessageAndChoice3("「今日は天気が悪いみたいだから勉強でもしておきなさい」", "勉強する", "あえて外で遊ぶ", "ゲームする");
-                break;
-
-            case 3:
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「うん！　その方がいいわよ。」");
-                    AddKoukando(3);
-                    AddStudyKoukando(3);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「馬鹿なの？」");
-                    AddKoukando(-1);
-                    AddSportKoukando(1);
-                }
-                else if (playerChoice == 3)
-                {
-                    SimpleMessage("「テストどうなっても、お母さん知らないわよ？」");
-                    AddKoukando(-1);
-                    AddGameKoukando(1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // 8つめの行動パターン
-    public void DayPattern7()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン8");
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-                break;
-
-            case 2:
-                MessageAndChoice3("「今日は天気がいいみたいだから外で遊んできなさい。」", "勉強する", "外で遊ぶ", "ゲームする");
-                break;
-
-            case 3:
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「外で体動かしたらいいのに。」");
-                    AddKoukando(-1);
-                    AddStudyKoukando(1);
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「うん！　その方がいいわよ。」");
-                    AddKoukando(3);
-                    AddSportKoukando(3);
-                }
-                else if (playerChoice == 3)
-                {
-                    SimpleMessage("「外で体動かしたらいいのに。」");
-                    AddKoukando(-1);
-                    AddGameKoukando(1);
-                }
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // 9つめの行動パターン
-    public void DayPattern8()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン9");
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-                break;
-
-            case 2:
-                MessageAndChoice2("「洗濯物干しておいてくれない?」", "うん", "やだ");
-                break;
-
-            case 3:
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「ありがとう。」");
-                    AddKoukando(1);
-
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「そのくらいやってくれてもいいでしょ！。」");
-                    AddKoukando(-1);
-
-                }
-
-                else
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // １０個目の行動パターン（この行動は母の登場はなし）
-    public void DayPattern9()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン10");
-                break;
-
-            case 1:
-                SimpleMessage("「やることないし、とりあえずゲームしよう！！。」");
-                break;
-
-            case 2:
-                SimpleMessage("「１日中ゲームして楽しかったー！。」");
-                AddGameKoukando(3);
-                AddStudyKoukando(-1);
-                AddSportKoukando(-1);
-                break;
-
-            case 3:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // 11個目の行動パターン（この行動は母の登場はなし）
-    public void DayPattern10()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン11");
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-                break;
-
-            case 2:
-                SimpleMessage("「１日中勉強して、これでテスト100点取れるぞ！！。」");
-                AddGameKoukando(-1);
-                AddStudyKoukando(3);
-                AddSportKoukando(-1);
-                break;
-
-            case 3:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません");
-                break;
-        }
-    }
-
-    // 12個目の行動パターン
-    public void DayPattern11()
-    {
-        switch (turn)
-        {
-            case 0:
-                SimpleMessage("パターン12");
-
-                break;
-
-            case 1:
-                SimpleMessage("「おはよう。」");
-
-                break;
-
-            case 2:
-                MessageAndChoice2("「あとで、おつかいでじゃがいも買ってきてくれない?」", "うん", "やだ");
-
-                break;
-
-            case 3:
-                if (playerChoice == 1)
-                {
-                    SimpleMessage("「ありがとう。」");
-                    otukaiFlag = true; // フラグを回収
-                    otukaiDidFlag = false; // おつかいはまだしてない
-                    AddKoukando(1);
-
-                }
-                else if (playerChoice == 2)
-                {
-                    SimpleMessage("「そのくらいやってくれてもいいでしょ！。」");
-                    otukaiFlag = false;
-                    otukaiDidFlag = false;
-                    AddKoukando(-1);
-
-                }
-                else
-                {
-                    SimpleMessage("【エラー】playerChoiceに異常あり");
-                }
-                break;
-
-            case 4:
-                NextDay();
-                break;
-
-            default:
-                SimpleMessage("【エラー】このターンに何も割り当てられていません(パターン12)");
-                break;
-        }
-    }
-
-    // おつかいイベント
-    public void DayPattern12() // 母はこのパートには、登場しない
-    {
-        if ((otukaiFlag == true) && (otukaiDidFlag == false))
-        {
-            switch (turn)
-            {
-                case 0:
-                    SimpleMessage("「今日は頼まれていたおつかいに行こうか。」");
-                    break;
-
-                // ここで場面は、商店街に変わる。
-                case 1:
-                    SimpleMessage("「いらっしゃい！！！」"); // 商店街の店主
-
-                    break;
-
-                case 2:
-                    // 商店街の店主
-                    MessageAndChoice4("「何を買っていくんだい？」", "だいこん", "じゃがいも", "さかな", "サツマイモ");
-
-                    break;
-
-                case 3: // otukaiDidFlag 1:間違ったものを買った 2:正しいものを買った
-                    //SimpleMessage("表示テスト");
-                    if (playerChoice == 1)
-                    {
-                        SimpleMessage("「まいど！！。」");
-                        otukaiDidFlag = false;
-                        Debug.Log("turn=" + turn);
-                    }
-                    else if (playerChoice == 2)
-                    {
-                        SimpleMessage("「まいど！！。」");
-                        otukaiDidFlag = true;
-                        Debug.Log("turn=" + turn);
-                    }
-                    else if (playerChoice == 3)
-                    {
-                        SimpleMessage("「まいど！！。」");
-                        otukaiDidFlag = false;
-                        Debug.Log("turn=" + turn);
-                    }
-                    else if (playerChoice == 4)
-                    {
-                        SimpleMessage("「まいど！！。」");
-                        otukaiDidFlag = false;
-                        Debug.Log("turn=" + turn);
-                    }
-                    else
-                    {
-                        SimpleMessage("【エラー】playerChoiceに異常あり");
-                    }
-
-                    break;
-
-                case 4:
-                    NextDay();
-                    break;
-
-                default: //if文あると、なぜかここに引っかかる！！！！！ なんで！？
-                    Debug.Log("turn=" + turn);
-                    SimpleMessage("【エラー】このターンに何も割り当てられていません(おつかいパート)");
-
-
-                    break;
-            }
-
-        }
-        else
-        {
-            switch (turn)
-            {
-                case 0:
-                    SimpleMessage("おつかいイベントのフラグを回収できませんでした。");
-                    break;
-                case 1:
-                    SimpleMessage("「もー。なんでおつかい行ってくれない」");
-                    break;
-                case 2:
-                    NextDay();
-                    break;
-                default:
-                    SimpleMessage("【エラー】このターンに何も割り当てられていません(おつかいパート)");
-                    break;
-            }
-        }
-
-    }
-
-    // おつかいで正しいものを買ったか判定する
-    public void DayPattern13()
-    {
-        if ((otukaiFlag == true) && (otukaiDidFlag == true))
-        {
-            switch (turn)
-            {
-                case 0:
-                    SimpleMessage("パターン13");
-                    break;
-
-                case 1:
-                    SimpleMessage("「この前、頼んだおつかい行ってくれたのね!!!。」");
-
-                    break;
-
-                case 2:
-                    SimpleMessage("「ちゃんとジャガイモ買ってきてくれたのね!!」");
-                    AddKoukando(5);
-                    break;
-
-                case 3:
-                    NextDay();
-                    break;
-
-                default:
-                    SimpleMessage("【エラー】このターンに何も割り当てられていません(おつかいパート)");
-                    break;
-            }
-        }
-        else
-        {
-            switch (turn)
-            {
-                case 0:
-                    SimpleMessage("正しくおつかいをすることができませんでした。");
-                    break;
-                case 1:
-                    SimpleMessage("「今度、おつかい行っておいで。」");
-                    AddKoukando(-1);
-                    break;
-                case 2:
-                    NextDay();
-                    break;
-                default:
-                    SimpleMessage("【エラー】このターンに何も割り当てられていません(おつかい判定パート)");
-                    break;
-            }
-        }
-
-    }
-}
+    
