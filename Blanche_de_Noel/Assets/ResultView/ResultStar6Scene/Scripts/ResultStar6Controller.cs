@@ -46,7 +46,7 @@ public class ResultStar6Controller : MonoBehaviour
         blackBackGround = GameObject.Find("BlackBackground");
 
 
-        SuperCar = GameObject.Find("SuperCar").GetComponent<SpriteRenderer>();
+        SuperCar = GameObject.FindWithTag("SuperCar").GetComponent<SpriteRenderer>();
 
     }
 
