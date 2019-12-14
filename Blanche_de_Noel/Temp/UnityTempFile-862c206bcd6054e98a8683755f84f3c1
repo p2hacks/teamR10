@@ -297,6 +297,7 @@
 "Assets/DayViewTemplate/Scripts/DayController.cs"
 "Assets/DayViewTemplate/Scripts/DayPatternController.cs"
 "Assets/DayViewTemplate/Scripts/MessageTextController.cs"
+"Assets/DifficultyLevelView/Scripts/ChooseDifficultyController.cs"
 "Assets/InfoView/Scripts/InfoViewController.cs"
 "Assets/TitleView/Scripts/CanvasFadeController.cs"
 "Assets/TitleView/Scripts/GAMEMAIN.cs"

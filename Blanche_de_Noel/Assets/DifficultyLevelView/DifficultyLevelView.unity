@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 1092044454}
   - component: {fileID: 1092044453}
   - component: {fileID: 1092044452}
+  - component: {fileID: 1092044455}
   m_Layer: 5
   m_Name: Normal Button
   m_TagString: Untagged
@@ -421,7 +422,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1092044453}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1092044455}
+        m_MethodName: SetNormalMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1092044453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +470,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092044450}
   m_CullTransparentMesh: 0
+--- !u!114 &1092044455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092044450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a8007d7600845b194e91723f838e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1096687548
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,8 +648,9 @@ GameObject:
   - component: {fileID: 1512660691}
   - component: {fileID: 1512660690}
   - component: {fileID: 1512660689}
+  - component: {fileID: 1512660692}
   m_Layer: 5
-  m_Name: Easy Bnutton
+  m_Name: Easy Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -693,7 +718,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1512660690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1512660692}
+        m_MethodName: SetEasyMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1512660690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,6 +766,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512660687}
   m_CullTransparentMesh: 0
+--- !u!114 &1512660692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512660687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a8007d7600845b194e91723f838e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1578785781
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +789,7 @@ GameObject:
   - component: {fileID: 1578785782}
   - component: {fileID: 1578785784}
   - component: {fileID: 1578785783}
+  - component: {fileID: 1578785785}
   m_Layer: 5
   m_Name: Difficult Level Background
   m_TagString: Untagged
@@ -803,6 +852,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578785781}
   m_CullTransparentMesh: 0
+--- !u!114 &1578785785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578785781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a8007d7600845b194e91723f838e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1632448873
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +1005,7 @@ GameObject:
   - component: {fileID: 1648515617}
   - component: {fileID: 1648515616}
   - component: {fileID: 1648515615}
+  - component: {fileID: 1648515618}
   m_Layer: 5
   m_Name: Hard Button
   m_TagString: Untagged
@@ -1013,7 +1075,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1648515616}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1648515618}
+        m_MethodName: SetHardMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1648515616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,6 +1123,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648515613}
   m_CullTransparentMesh: 0
+--- !u!114 &1648515618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648515613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a8007d7600845b194e91723f838e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1764967105
 GameObject:
   m_ObjectHideFlags: 0
