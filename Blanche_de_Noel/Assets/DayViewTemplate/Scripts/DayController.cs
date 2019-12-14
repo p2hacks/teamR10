@@ -9,13 +9,17 @@ using UnityEngine.UI;
  *  このコードの下側の「1日の流れ編集エリア」を編集する
  *
  *  **　指定された部分以外は絶対に書き換えないこと！　**
+ *
+ *　クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
+ *  
  */
 
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    int numOfDayPattern = 1;
+    int numOfDayPattern = 2;
 
+    //DayPatternController dayPatternController; //DayControllerが不安定な時の避難用
 
     private int day = 23; //現在の日にち //25日に結果発表
     const int CHRISTMAS_DAY = 25; //クリスマスの日 //プレゼントが届けられる日
@@ -36,10 +40,31 @@ public class DayController : MonoBehaviour
     GameObject buttonChoice3;
     GameObject buttonChoice4;
 
+    GameObject backController; //背景画像を入れ替えるスクリプト
+    GameObject motherImage;
+
+    ChristmasResultController christmasDayResult;
+    /**************** クリスマスの結果発表用変数 ******************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
+    float p_move = 0.0f;
+    float x = 0.0f;
+
+    float fadeOpacity = 0.0f;
+    float snowOpacity = 0.0f;
+    public AudioClip presentSet;
+
+    GameObject Present;
+    GameObject Present_O;
+    GameObject PresentContain;
+    GameObject SnowEffect;
+    GameObject Fader;
+    *********************************************************/
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //dayPatternController = GameObject.Find("DayPatternController").GetComponent<DayPatternController>(); //DayControllerが不安定な時の避難用
+
         messageText = GameObject.Find("Canvas/MessageText");
         nextButton = GameObject.Find("Canvas/NextButton").GetComponent<Button>();
 
@@ -52,6 +77,27 @@ public class DayController : MonoBehaviour
         buttonChoice2.SetActive(false);
         buttonChoice3.SetActive(false);
         buttonChoice4.SetActive(false);
+
+        backController = GameObject.Find("Back_Controller");
+        motherImage = GameObject.Find("MotherImage");
+
+        christmasDayResult = GameObject.Find("ChristmasResultController").GetComponent<ChristmasResultController>();
+        /**************** クリスマスの結果発表用 ******************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
+        Present = GameObject.Find("PresentBox");
+        Present_O = GameObject.Find("PresentBox_O");
+        PresentContain = GameObject.Find("Benz");
+
+        Fader = GameObject.Find("Fader");
+        SnowEffect = GameObject.Find("Snow");
+        Material fade = Fader.GetComponent<Renderer>().material;
+        Material snow = SnowEffect.GetComponent<Renderer>().material;
+
+        fade.color = new Color(0.0f, 0.0f, 0.0f, fadeOpacity);
+        snow.color = new Color(0.0f, 0.0f, 0.0f, snowOpacity);
+
+        Present_O.SetActive(false);
+        PresentContain.SetActive(false);
+        ******************************************************/
 
         GAMEMAIN.ResetKoukandoTrigger();
 
@@ -71,7 +117,7 @@ public class DayController : MonoBehaviour
                     break;
 
                 case 1:
-                    DayPattern0();
+                    DayPattern1();
                     break;
 
                 default:
@@ -154,11 +200,11 @@ public class DayController : MonoBehaviour
     }
 
     // 単純に母親のメッセージを表示する
-    void SimpleMessage(string message) =>
+    public void SimpleMessage(string message) =>
         messageText.GetComponent<MessageTextController>().DisplayMessage(message);
 
     // 母親のメッセージと、それに対する選択肢を2つ表示する
-    void MessageAndChoice2(string message, string c1, string c2)
+    public void MessageAndChoice2(string message, string c1, string c2)
     {
         messageText.GetComponent<MessageTextController>().DisplayMessage(message);
 
@@ -172,7 +218,7 @@ public class DayController : MonoBehaviour
     }
 
     // 母親のメッセージと、それに対する選択肢を3つ表示する
-    void MessageAndChoice3(string message, string c1, string c2, string c3)
+    public void MessageAndChoice3(string message, string c1, string c2, string c3)
     {
         messageText.GetComponent<MessageTextController>().DisplayMessage(message);
 
@@ -188,7 +234,7 @@ public class DayController : MonoBehaviour
     }
 
     // 母親のメッセージと、それに対する選択肢を4つ表示する
-    void MessageAndChoice3(string message, string c1, string c2, string c3, string c4)
+    public void MessageAndChoice4(string message, string c1, string c2, string c3, string c4)
     {
         messageText.GetComponent<MessageTextController>().DisplayMessage(message);
 
@@ -205,12 +251,12 @@ public class DayController : MonoBehaviour
         DisableNextButton();
     }
 
-    void AddKoukando(int n)
+    public void AddKoukando(int n)
     {
         GAMEMAIN.AddKoukando(n); //好感度を引数分加える
     }
 
-    void NextDay() //一日の流れが終わり次の日に遷移する時に呼び出す
+    public void NextDay() //一日の流れが終わり次の日に遷移する時に呼び出す
     {
         //フェードアウト
         GameObject.Find("Gradation").GetComponent<GradationFadeController>().FadeScreenTo(0);
@@ -224,17 +270,19 @@ public class DayController : MonoBehaviour
             randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
             turn = 0;
             day++;
+            ShowBackImage(1); //シーンの最初には必ず自宅の背景が選ばれるようにする。別の場所で1日を始める場合は最初のターンでその背景をこの関数で呼び出す
+            ShowMotherImage(); //シーンの最初には必ず母親の画像を表示する。不要なときは最初のターンでHideMotherImage()を呼び出す
             Debug.Log("day = " + day);
         }
     }
 
-    void NextButtonEnableDelayTrigger()
+    public void NextButtonEnableDelayTrigger()
     {
         nextButtonEnableDelayTrigger = true;
         DisableNextButton();
     }
 
-    void NextButtonEnableDelay()
+    public void NextButtonEnableDelay()
     {
         if (nextButtonEnableDelayTrigger)
             nextButtonEnableDelay++;
@@ -247,15 +295,140 @@ public class DayController : MonoBehaviour
         }
     }
 
-    void DayPatternError()
+    public void ShowBackImage(int n) //番号で割り当てられた背景画像を表示する
+    {
+        Debug.Log("BackImage = " + n);
+
+        switch (n)
+        {
+            case 1:
+                backController.GetComponent<BackImageController>().ShowHouseImage();
+                break;
+
+            case 2:
+                backController.GetComponent<BackImageController>().ShowDaytimeParkImage();
+                break;
+
+            case 3:
+                backController.GetComponent<BackImageController>().ShowSupermarketImage();
+                break;
+        }
+    }
+
+    void HideMotherImage() => motherImage.SetActive(false); //母親の画像が不要なときは非表示にする
+    void ShowMotherImage() => motherImage.SetActive(true); //非表示中の時に母親の画像を出現させたいときに呼び出す
+
+    public void DayPatternError()
     {
         SimpleMessage("【エラー】1日の流れパターンが割り当てられていません。randomPatternに異常あり");
     }
 
-    void ChristmasDayResult()
+    public void ChristmasDayResult()
     {
-        SimpleMessage("クリスマスの日の結果発表");
+        christmasDayResult.ChristmasDayResult();
+
+        //switch (turn)
+        //{
+        //    case 0:
+        //        DisableNextButton();
+        //        ChristmasDayFadeIn();
+        //        break;
+        //    case 1:
+        //        DisableNextButton();
+        //        ChristmasDayFadeOut();
+        //        break;
+        //    case 2:
+        //        messageText.SetActive(true);
+        //        SimpleMessage("クリスマスプレゼントよ！");
+        //        break;
+        //    case 3:
+        //        DisableNextButton();
+        //        present_move();
+        //        break;
+        //    case 4:
+        //        DisableNextButton();
+        //        present_open();
+        //        break;
+        //    case 5:
+        //        SimpleMessage("ベンツだ！！");
+        //        break;
+        //    default:
+        //        SimpleMessage("【エラー】このターンに何も割り当てられていません");
+        //        break;
+        //}
     }
+
+    /************************* クリスマスの結果発表用 ここから **************************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
+    void present_move()
+    {
+        Present.gameObject.transform.Translate(0.0f, p_move, 0.0f);
+        Debug.Log("Presentのxは" + Present.transform.position.y);
+        if (Present.transform.position.y > 0.0f)
+        {
+            x = x + 0.001f;
+            p_move = p_move - x * x;
+        }
+        else if (Present.transform.position.y < 0.0f)
+        {
+            p_move = 0.0f;
+            EnableNextButton();
+        }
+    }
+
+    void present_open()
+    {
+        if (Present.transform.position.y < 2.0f)
+        {
+            Present.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
+        }
+        else if (Present.transform.position.y >= 2.0f)
+        {
+            Present.SetActive(false);
+            Present_O.SetActive(true);
+            if (Present_O.transform.position.y >= 0.0f)
+            {
+                Present_O.gameObject.transform.Translate(0.0f, -0.2f, 0.0f);
+            }
+            EnableNextButton();
+        }
+    }
+
+    void ChristmasDayFadeIn()
+    {
+        messageText.SetActive(false);
+        if (snowOpacity <= 1.0f)
+        {
+            fadeOpacity = 1.0f;
+            SnowEffect.GetComponent<Renderer>().material.color = new Color(255, 255, 255, snowOpacity);
+            Fader.GetComponent<Renderer>().material.color = new Color(0, 0, 0, fadeOpacity);
+            snowOpacity = snowOpacity + 0.01f;
+        }
+        else if (snowOpacity >= 1.0f)
+        {
+            snowOpacity = 1.0f;
+            EnableNextButton();
+        }
+    }
+
+    void ChristmasDayFadeOut()
+    {
+        if ((snowOpacity >= 0.0f) && (fadeOpacity >= 0.0f))
+        {
+            SnowEffect.GetComponent<Renderer>().material.color = new Color(255, 255, 255, snowOpacity);
+            Fader.GetComponent<Renderer>().material.color = new Color(0, 0, 0, fadeOpacity);
+            snowOpacity = snowOpacity - 0.01f;
+            fadeOpacity = fadeOpacity - 0.01f;
+        }
+        else if ((snowOpacity <= 0.0f) && (fadeOpacity <= 0.0f))
+        {
+            snowOpacity = 0.0f;
+            fadeOpacity = 0.0f;
+            EnableNextButton();
+        }
+    }
+
+    /********************************** クリスマスの結果発表用 ここまで *************************************/
+
 
     /**************************************************
      *　　　　　　　　　　1日の流れ編集エリア　　　　　　　　　*
@@ -288,6 +461,20 @@ public class DayController : MonoBehaviour
      *　AddKoukando(int i)
      *　　母親の好感度を加える/減らす
      *　　引数:i = 加える数(マイナスで減らせる)
+     *
+     *
+     *　【背景画像】
+     *　ShowBackImage(int n);
+     *　　特定の背景画像を表示する
+     *　　引数:n = 背景画像に割り当てられた番号　1:自宅　2:公園　3:スーパー
+     *　　** ! ** 画像を追加した場合は必ずこの関数内で番号を割り当てること！
+     *
+     *　【母親画像】
+     *　void HideMotherImage();
+     *　　母親の画像が不要なときは非表示にする
+     *　
+     *　void ShowMotherImage();
+     *　　非表示中の時に母親の画像を出現させたいときに呼び出す
      * 
      */
 
@@ -332,5 +519,43 @@ public class DayController : MonoBehaviour
 
         }
 
+    }
+
+    void DayPattern1()
+    {
+        switch (turn)
+        {
+            case 0:
+                ShowBackImage(3);
+                HideMotherImage();
+                SimpleMessage("おつかいの日");
+                break;
+
+            case 1:
+                MessageAndChoice4("どれを買う？", "トマト", "ネギ", "豆腐", "F2戦闘機");
+                break;
+
+            case 2:
+                if (playerChoice == 1)
+                    SimpleMessage("トマトを買った");
+                else if (playerChoice == 2)
+                    SimpleMessage("ネギ");
+                else if (playerChoice == 3)
+                    SimpleMessage("豆腐を買った");
+                else if (playerChoice == 4)
+                    SimpleMessage("F2戦闘機に乗って家に帰った");
+                else
+                    SimpleMessage("エラー　不正な選択");
+                break;
+
+            case 3:
+                NextDay();
+                break;
+
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+
+        }
     }
 }

@@ -30,19 +30,24 @@ public class GradationFadeController : MonoBehaviour
             x -= 1.5f;
 
             //タイトルからの遷移のとき、フェード演出画像が真ん中にきたらシーンを切り替え
-            if (x <= 0.0f && x >= -2.0f && isToScene == 1)
-            {
-                SceneManager.LoadScene("InfoScene");
-                isToScene = 0;
-            }
-            else if (x <= 0.0f && x >= -2.0f && isToScene == 2)
-            {
-                SceneManager.LoadScene("DayViewTemplate");
-                isToScene = 0;
-            }
-            else if (x <= 0.0f && x >= -2.0f && isToScene == 3)
+            if (x <= 0.0f && x >= -2.0f && isToScene == 10)
             {
                 SceneManager.LoadScene("TitleScene");
+                isToScene = 0;
+            }
+            else if (x <= 0.0f && x >= -2.0f && isToScene == 20)
+            {
+                SceneManager.LoadScene("InfoScene"); 
+                 isToScene = 0;
+            }
+            else if (x <= 0.0f && x >= -2.0f && isToScene == 30)
+            {
+                SceneManager.LoadScene("DifficultyLevelView");
+                isToScene = 0;
+            }
+            else if (x <= 0.0f && x >= -2.0f && isToScene == 40)
+            {
+                SceneManager.LoadScene("DayViewTemplate");
                 isToScene = 0;
             }
 
