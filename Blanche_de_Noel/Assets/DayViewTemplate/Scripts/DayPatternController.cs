@@ -94,7 +94,7 @@ public class DayPatternController : MonoBehaviour
             case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「欲しいものがもらえるといいわね。」");
+                    SimpleMessage("「欲しいプレゼントがもらえるといいわね。」");
                     AddKoukando(1);
                 }
                 else if (GetPlayerChoice() == 2)
@@ -124,7 +124,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn()) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
             case 0:
-                SimpleMessage("パターン２");
+                SimpleMessage("「いい朝だね！！」");
                 break;
 
             case 1:
@@ -140,12 +140,13 @@ public class DayPatternController : MonoBehaviour
                 {
                     SimpleMessage("「えらいね！！」");
                     AddKoukando(1);
+                    AddStudyKoukando(1);
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「早めにやっておきなさい。」");
                     AddKoukando(-1);
-                    AddStudyKoukando(1);
+                    AddStudyKoukando(-1);
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -170,7 +171,7 @@ public class DayPatternController : MonoBehaviour
         {
 
             case 0:
-                SimpleMessage("パターン３");
+                SimpleMessage("「今日は眠いねー」");
                 break;
             case 1:
                 MessageAndChoice3("「とりあえず、好きなことやってきなさい。」", "勉強", "外でサッカー", "部屋でゲーム");
@@ -217,7 +218,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン４");
+                SimpleMessage("「今日はやることが多いわね。」");
                 break;
 
             case 1:
@@ -259,7 +260,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン5");
+                SimpleMessage("「スーパーに行かなくちゃ！」");
                 break;
 
             case 1:
@@ -303,7 +304,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン6");
+                SimpleMessage("「掃除めんどくさいわね。」");
                 break;
 
             case 1:
@@ -346,7 +347,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン7");
+                SimpleMessage("「最近天気悪いわね。」");
                 break;
 
             case 1:
@@ -397,7 +398,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン8");
+                SimpleMessage("「久ひぶりに晴れたわね。」");
                 break;
 
             case 1:
@@ -448,7 +449,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン9");
+                SimpleMessage("「今日は洗濯日和！」");
                 break;
 
             case 1:
@@ -494,7 +495,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン10");
+                SimpleMessage("「ひますぎてヤバイ。」");
                 break;
 
             case 1:
@@ -524,11 +525,11 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン11");
+                SimpleMessage("「やることないなー。」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("「勉強すればいいのか！」");
                 break;
 
             case 2:
@@ -554,7 +555,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("パターン12");
+                SimpleMessage("「買い物行っている時間ないわ。」");
 
                 break;
 
@@ -603,6 +604,7 @@ public class DayPatternController : MonoBehaviour
     }
 
     // おつかいイベント
+    // お店の画像に差し替えて欲しい
     public void DayPattern12() // 母はこのパートには、登場しない
     {
         //otukaiDidFlag 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
@@ -610,19 +612,19 @@ public class DayPatternController : MonoBehaviour
         {
             switch (GetTurn())
             {
-                case 0:
+                case 0: // 自宅で登場は主人公だけ
                     SimpleMessage("「今日は頼まれていたおつかいに行こうか。」");
                     break;
 
-                // ここで場面は、商店街に変わる。
+                // ここで場面は、お店に変わる。
                 case 1:
-                    SimpleMessage("「いらっしゃい！！！」"); // 商店街の店主
+                    SimpleMessage("「いらっしゃいませ！！！」"); // 商店街の店主
 
                     break;
 
                 case 2:
-                    // 商店街の店主
-                    MessageAndChoice4("「何を買っていくんだい？」", "だいこん", "じゃがいも", "さかな", "サツマイモ");
+                    // 店主
+                    MessageAndChoice4("「何を買いますか？」", "だいこん", "じゃがいも", "さかな", "サツマイモ");
 
                     break;
 
@@ -630,7 +632,7 @@ public class DayPatternController : MonoBehaviour
                     //SimpleMessage("表示テスト");
                     if (GetPlayerChoice() == 1)
                     {
-                        SimpleMessage("「まいど！！」");
+                        SimpleMessage("「ありがとうございます！！」");
                         SetOtukaiDidFlag(1);
                         SetOtukaiFlag(true);
                         Debug.Log("turn=" + GetTurn());
@@ -639,7 +641,7 @@ public class DayPatternController : MonoBehaviour
 
                     else if (GetPlayerChoice() == 2)
                     {
-                        SimpleMessage("「まいど！！」");
+                        SimpleMessage("「ありがとうございます！！」");
                         SetOtukaiDidFlag(2);
                         Debug.Log("OtukaiDidFlag=" + GetOtukaiDidFlag());
                         SetOtukaiFlag(true);
@@ -648,7 +650,7 @@ public class DayPatternController : MonoBehaviour
                     }
                     else if (GetPlayerChoice() == 3)
                     {
-                        SimpleMessage("「まいど！！」");
+                        SimpleMessage("「ありがとうございます！！」");
                         SetOtukaiDidFlag(1);
                         SetOtukaiFlag(true);
                         Debug.Log("turn=" + GetTurn());
@@ -656,7 +658,7 @@ public class DayPatternController : MonoBehaviour
                     }
                     else if (GetPlayerChoice() == 4)
                     {
-                        SimpleMessage("「まいど！！」");
+                        SimpleMessage("「ありがとうございます！！」");
                         SetOtukaiDidFlag(1);
                         SetOtukaiFlag(true);
                         Debug.Log("turn=" + GetTurn());
@@ -722,7 +724,7 @@ public class DayPatternController : MonoBehaviour
             switch (GetTurn())
             {
                 case 0:
-                    SimpleMessage("パターン13");
+                    SimpleMessage("「そう言えば、この前おつかい頼んでいたわよね？」");
                     break;
 
                 case 1:
