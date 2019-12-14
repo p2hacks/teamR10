@@ -2,18 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ResultSceneController : MonoBehaviour
 {
+    GameObject Saku;
+    GameObject Switch;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        if (ChooseDifficultyController.difficultyBorder > 0)
+        {
+            Saku = GameObject.Find("Saku");
+            Switch = GameObject.Find("Switch");
+            ResultSaku();
+        }
+        else
+        {
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log(ChooseDifficultyController.difficultyBorder);
+    }
+
+    public void ResultSaku()
+    {
+        Saku.gameObject.transform.Translate(0.0f, 0.0f, -20.0f);
+        Switch.gameObject.transform.Translate(0.0f, 0.0f, 20.0f);
     }
 
     //void ResultPresentMove()
