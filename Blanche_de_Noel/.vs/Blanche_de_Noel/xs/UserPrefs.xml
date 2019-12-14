@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{4246EA8D-75C6-4037-09A4-B1682FDE5CF3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TitleView/Scripts/GAMEMAIN.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DayViewTemplate/Scripts/ChristmasResultController.cs">
     <Files>
       <File FileName="Assets/ResultView/ResultStar5Scene/Scripts/ResultStar5Controller.cs" Line="7" Column="25" />
-      <File FileName="Assets/ResultView/ResultStar6Scene/Scripts/ResultStar6Controller.cs" Line="49" Column="54" />
+      <File FileName="Assets/ResultView/ResultStar6Scene/Scripts/ResultStar6Controller.cs" Line="29" Column="11" />
       <File FileName="Assets/TitleView/Scripts/GAMEMAIN.cs" Line="8" Column="41" />
       <File FileName="Assets/ResultView/Scripts/ResultSceneController.cs" Line="189" Column="48" />
+      <File FileName="Assets/DayViewTemplate/Scripts/ChristmasResultController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +13,9 @@
           <Node name="Blanche_de_Noel" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="DayViewTemplate" expanded="True">
-                <Node name="Scripts" expanded="True" />
+                <Node name="Scripts" expanded="True">
+                  <Node name="ChristmasResultController.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="DifficultyLevelView" expanded="True">
                 <Node name="Scripts" expanded="True" />
@@ -45,9 +48,7 @@
                 <Node name="Scripts" expanded="True" />
               </Node>
               <Node name="TitleView" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="GAMEMAIN.cs" selected="True" />
-                </Node>
+                <Node name="Scripts" expanded="True" />
               </Node>
             </Node>
           </Node>

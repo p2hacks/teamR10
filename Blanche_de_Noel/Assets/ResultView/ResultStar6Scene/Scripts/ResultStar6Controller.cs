@@ -24,6 +24,7 @@ public class ResultStar6Controller : MonoBehaviour
     SpriteRenderer SoccerBall;
     SpriteRenderer Doll;
 
+    public RectTransform SuperCarPosition;
 
     GameObject blackBackGround;
 
@@ -47,6 +48,7 @@ public class ResultStar6Controller : MonoBehaviour
 
 
         SuperCar = GameObject.FindWithTag("SuperCar").GetComponent<SpriteRenderer>();
+        SuperCarPosition = GameObject.FindWithTag("SuperCar").GetComponent<RectTransform>();
 
     }
 
