@@ -37,7 +37,7 @@ public class GradationFadeController : MonoBehaviour
             }
             else if (x <= 0.0f && x >= -2.0f && isToScene == 20)
             {
-                SceneManager.LoadScene("InfoView"); 
+                SceneManager.LoadScene("InfoScene"); 
                  isToScene = 0;
             }
             else if (x <= 0.0f && x >= -2.0f && isToScene == 30)
