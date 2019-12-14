@@ -67,6 +67,7 @@
     <Compile Include="Assets\DayViewTemplate\Scripts\ChristmasResultController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\DayController.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\DayPatternController.cs" />
+    <Compile Include="Assets\DayViewTemplate\Scripts\DayText.cs" />
     <Compile Include="Assets\DayViewTemplate\Scripts\MessageTextController.cs" />
     <Compile Include="Assets\DifficultyLevelView\Scripts\ChooseDifficultyController.cs" />
     <Compile Include="Assets\InfoView\Scripts\InfoViewController.cs" />
@@ -76,37 +77,37 @@
     <Compile Include="Assets\TitleView\Scripts\GradationFadeController.cs" />
     <Compile Include="Assets\TitleView\Scripts\TitleImageTempController.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/Takumi/Desktop/new/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/kaitokudou/Downloads/teamR10/Blanche_de_Noel/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/2019.2.15f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
