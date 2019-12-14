@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 435985123}
   - component: {fileID: 435985124}
   m_Layer: 0
-  m_Name: Video Player 6
+  m_Name: VideoPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +631,7 @@ VideoPlayer:
   m_GameObject: {fileID: 435985122}
   m_Enabled: 1
   m_VideoClip: {fileID: 32900000, guid: 92db126ea0c8b4bfba6fb67b1e6250a2, type: 3}
-  m_TargetCameraAlpha: 0.297
+  m_TargetCameraAlpha: 0.398
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1800122163}
   m_TargetTexture: {fileID: 0}
@@ -647,7 +647,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://kokoron.madoka.org/mirror/n/noratooujotonoranekoheart/noratotoCM_fullHD05.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1

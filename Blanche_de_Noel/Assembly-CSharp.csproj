@@ -71,6 +71,13 @@
     <Compile Include="Assets\DayViewTemplate\Scripts\MessageTextController.cs" />
     <Compile Include="Assets\DifficultyLevelView\Scripts\ChooseDifficultyController.cs" />
     <Compile Include="Assets\InfoView\Scripts\InfoViewController.cs" />
+    <Compile Include="Assets\ResultView\ResultStar0Scene\Scripts\ResultStar0Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar1Scene\Scripts\ResultStar1Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar2Scene\Scripts\ResultStar2Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar3Scene\Scripts\ResultStar3Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar4Scene\Scripts\ResultStar4Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar5Scene\Scripts\ResultStar5Controller.cs" />
+    <Compile Include="Assets\ResultView\ResultStar6Scene\Scripts\ResultStar6Controller.cs" />
     <Compile Include="Assets\ResultView\Scripts\ResultSceneController.cs" />
     <Compile Include="Assets\TitleView\Scripts\CanvasFadeController.cs" />
     <Compile Include="Assets\TitleView\Scripts\GAMEMAIN.cs" />
