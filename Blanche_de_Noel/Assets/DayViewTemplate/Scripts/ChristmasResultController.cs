@@ -148,7 +148,7 @@ public class ChristmasResultController : MonoBehaviour
                 }
                 break;
             case 4:
-                SimpleMessage("サンタさんからプレゼントが届いたわよ！");
+                SimpleMessage("お母さん「サンタさんからプレゼントが届いたわよ！」");
                 break;
             case 5:
                 DisableNextButton();

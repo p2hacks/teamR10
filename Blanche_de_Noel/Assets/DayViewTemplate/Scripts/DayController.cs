@@ -36,6 +36,10 @@ public class DayController : MonoBehaviour
     private int otukaiDidFlag; // 正しくおつかいをしているか判定 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
     private bool isOtukaiDone = false;
 
+    public AudioClip SE;
+    AudioSource audioSource;
+    private bool SE_judge = true;
+
     GameObject messageText;
     Button nextButton;
 
@@ -89,6 +93,8 @@ public class DayController : MonoBehaviour
         motherImage = GameObject.Find("MotherImage");
 
         dayPatternController = GameObject.Find("DayPatternController").GetComponent<DayPatternController>();
+
+        audioSource = GetComponent<AudioSource>();
 
         christmasDayResult = GameObject.Find("ChristmasResultController").GetComponent<ChristmasResultController>();
         /**************** クリスマスの結果発表用 ******************クリスマスの日の結果発表のコードは、DayController内が長すぎになるためChristmasResultControllerに置き換えました
@@ -346,6 +352,13 @@ public class DayController : MonoBehaviour
 
     public void NextDay() //一日の流れが終わり次の日に遷移する時に呼び出す
     {
+
+        if(SE_judge)
+        {
+            audioSource.PlayOneShot(SE);
+            SE_judge = false;
+        }
+
         //フェードアウト
         GameObject.Find("Gradation").GetComponent<GradationFadeController>().FadeScreenTo(0);
 
@@ -418,6 +431,11 @@ public class DayController : MonoBehaviour
     public void DayPatternError()
     {
         SimpleMessage("【エラー】1日の流れパターンが割り当てられていません。randomPatternに異常あり");
+    }
+
+    public void Change_SE_judge()
+    {
+        SE_judge = true;
     }
 
     public void ChristmasDayResult()

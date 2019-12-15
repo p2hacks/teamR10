@@ -374,12 +374,12 @@ public class DayPatternController : MonoBehaviour
 
             case 6:
                 SimpleMessage("お母さん「ただいま。」");
-                rain = Random.Range(0, 2);
+                rain = Random.Range(0, 100);
                 break;
 
             case 7:
                 ShowMotherImage();
-                if (rain > 0) //雨が降ったら
+                if (rain > 50) //雨が降ったら
                 {
                     if (GetPlayerChoice() == 1)
                     {
