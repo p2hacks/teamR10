@@ -474,7 +474,7 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("お母さん「久ひぶりに晴れたわね。」");
+                SimpleMessage("お母さん「久しぶりに晴れたわね。」");
                 break;
 
             case 1:
