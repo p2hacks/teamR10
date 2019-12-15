@@ -74,6 +74,7 @@
 /reference:"/Applications/2019.2.15f1/Unity.app/Contents/Managed/UnityEditor.Graphs.dll"
 /reference:"/Applications/2019.2.15f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
 /reference:"/Applications/2019.2.15f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll"
+/reference:"/Applications/2019.2.15f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
 /reference:"/Applications/2019.2.15f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll"
 /reference:"/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
 /reference:"/Applications/2019.2.15f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
