@@ -10,27 +10,19 @@ public class DayPatternController : MonoBehaviour
     */
 
     DayController dayController;
-    GameObject back_SupermarketImage;
-    GameObject back_HouseImage;
-    
-    Vector3 vector3 = new Vector3(0.15f, 0.1f, 0f);
-    Vector3 vector3House = new Vector3(0.15f, 0.1f, 200f);
 
     // Start is called before the first frame update
     void Start()
     {
         dayController = GameObject.Find("DayController").GetComponent<DayController>();
-        back_SupermarketImage = GameObject.Find("Back_SupermarketImage");
-        back_HouseImage = GameObject.Find("Back_HouseImage");
-        
     }
-   
+
     // Update is called once per frame
     void Update()
     {
         
     }
-    
+
     // メッセージ表示
     public void SimpleMessage(string message) => dayController.SimpleMessage(message);
     public void MessageAndChoice2(string message, string c1, string c2) => dayController.MessageAndChoice2(message, c1, c2);
@@ -52,6 +44,7 @@ public class DayPatternController : MonoBehaviour
 
     public int GetOtukaiDidFlag() => dayController.GetOtukaiDidFlag();
     public void SetOtukaiDidFlag(int n) => dayController.SetOtukaiDidFlag(n);
+    public void SetIsOtukaiDone() => dayController.SetIsOtukaiDone();
 
     // 選択肢
     public void ChoiceButton_PlayerChose1() => dayController.ChoiceButton_PlayerChose1();
@@ -88,31 +81,27 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn()) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
             case 0:
-                SimpleMessage("「おはよう！」");
+                SimpleMessage("お母さん「おはよう！」");
                 break;
 
             case 1:
-                SimpleMessage("「もうすぐクリスマスだね。」");
+                SimpleMessage("お母さん「もうすぐクリスマスだね。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「いい子にしてないとサンタさん来ないわよ？」", "うん", "そんなの知らない");
+                MessageAndChoice2("お母さん「いい子にしてないとサンタさん来ないわよ？」", "うん", "そんなの知らない");
                 break;
 
             case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「欲しいプレゼントがもらえるといいわね。」");
+                    SimpleMessage("お母さん「欲しいプレゼントがもらえるといいわね。」");
                     AddKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「もー、この子ったら。」");
+                    SimpleMessage("お母さん「もー、この子ったら。」");
                     AddKoukando(-1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else
                     SimpleMessage("【エラー】GetPlayerChoice()に異常あり");
@@ -136,35 +125,29 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn()) /********* このSwitch文の中に1日の内容を書き込んでね！ **********/
         {
             case 0:
-                SimpleMessage("「いい朝だね！！」");
+                SimpleMessage("お母さん「いい朝だね！！」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("お母さん「おはよう。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「宿題はやったの？」", "うん", "まだ");
+                MessageAndChoice2("お母さん「宿題はやったの？」", "うん", "まだ");
                 break;
 
             case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「えらいね！！」");
+                    SimpleMessage("お母さん「えらいね。」");
                     AddKoukando(1);
                     AddStudyKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「早めにやっておきなさい。」");
+                    SimpleMessage("お母さん「早めにやっておきなさい。」");
                     AddKoukando(-1);
                     AddStudyKoukando(-1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -189,46 +172,48 @@ public class DayPatternController : MonoBehaviour
         {
 
             case 0:
-                SimpleMessage("「今日は眠いねー」");
-                break;
-            case 1:
-                MessageAndChoice3("「とりあえず、好きなことやってきなさい。」", "勉強", "外でサッカー", "部屋でゲーム");
+                SimpleMessage("お母さん「もうこんな時間。」");
                 break;
 
-            case 2: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+            case 1:
+                SimpleMessage("お母さん「今日お母さんは忙しいから、好きなことやってきなさい。」");
+                break;
+
+            case 2:
+                MessageAndChoice3("宿題がまだ残ってる。友達がいま公園にいるかも。ラスボスを早く倒して自慢したい。", "勉強", "外でサッカー", "部屋でゲーム");
+                break;
+
+            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「頑張りなさい。」");
+                    SimpleMessage("お母さん「頑張りなさい。」");
                     AddStudyKoukando(1);
                     AddKoukando(1);
-                    Debug.Log("母の好感度="+GAMEMAIN.GetKoukando());
-                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
-
+                    AddSportKoukando(-1);
+                    AddGameKoukando(-1);
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「遅くならないようにね。」");
+                    SimpleMessage("お母さん「遅くならないようにね。」");
                     AddKoukando(1);
                     AddSportKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("スポーツパラメータ=" + GAMEMAIN.GetSportKoukando());
+                    AddStudyKoukando(-1);
+                    AddGameKoukando(-1);
 
                 }
                 else if (GetPlayerChoice() == 3)
                 {
-                    SimpleMessage("「ほどほどにね。」");
+                    SimpleMessage("お母さん「ほどほどにね。」");
                     AddKoukando(1);
                     AddGameKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetSportKoukando());
+                    AddStudyKoukando(-1);
+                    AddSportKoukando(-1);
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
                 break;
 
-            case 3:
+            case 4:
                 NextDay();
                 break;
 
@@ -245,34 +230,50 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「今日はやることが多いわね。」");
+                SimpleMessage("お母さん「お母さん今日は出かけなきゃいけないから…」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("お母さん「家で宿題やっていなさいね。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「お隣さんに回覧板持って行ってくれない？」", "いいよ", "やだ");
+                MessageAndChoice4("お母さんが出かけて行った。何をしよう？", "宿題", "ゲーム", "掃除", "運動");
                 break;
 
-            case 3: //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
+            case 3:
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「ありがとう。」");
-                    AddKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    SimpleMessage("宿題をやっていよう。");
+                    AddStudyKoukando(1);
+                    AddSportKoukando(-1);
+                    AddGameKoukando(-1);
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「えー。」");
-                    AddKoukando(-1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    SimpleMessage("テレビが使えるからテレビでゲームしよう！");
+                    AddGameKoukando(1);
+                    AddSportKoukando(-1);
+                    AddStudyKoukando(-1);
+                }
+                else if (GetPlayerChoice() == 3)
+                {
+                    SimpleMessage("こっそりお手伝いだ。");
+                    AddKoukando(2);
+                    AddGameKoukando(-1);
+                    AddSportKoukando(-1);
+                    AddStudyKoukando(-1);
+                }
+                else if(GetPlayerChoice() == 4)
+                {
+                    SimpleMessage("スーパーの向かいの信号までダッシュだ！");
+                    AddGameKoukando(-1);
+                    AddSportKoukando(1);
+                    AddStudyKoukando(-1);
                 }
                 else
-                    SimpleMessage("【エラー】GetPlayerChoice()に異常あり");
+                    SimpleMessage("errorNoMessage");
+
                 break;
 
             case 4:
@@ -291,11 +292,11 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「スーパーに行かなくちゃ！」");
+                SimpleMessage("お母さん「スーパーに行かなくちゃ！」");
                 break;
 
             case 1:
-                SimpleMessage("「お母さんね、お出かけしてくるけど、お留守番お願いね。」");
+                SimpleMessage("お母さん「お母さんね、お出かけしてくるけど、お留守番お願いね。」");
 
                 break;
             case 2:
@@ -308,15 +309,11 @@ public class DayPatternController : MonoBehaviour
                 {
                     SimpleMessage("「帰りにお菓子買ってくるわね。」");
                     AddKoukando(2);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
                     SimpleMessage("「晩ご飯抜き。」");
                     AddKoukando(-2);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
                 }
                 else
                     SimpleMessage("【エラー】GetPlayerChoice()に異常あり");
@@ -336,41 +333,81 @@ public class DayPatternController : MonoBehaviour
     // 6つめの行動パターン
     public void DayPattern5()
     {
+        int rain = 0;
+
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「掃除めんどくさいわね。」");
+                SimpleMessage("天気予報『今日の夕方の降水確率は40%です。』");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("お母さん「荷物が多くて大変だわ。急がないと。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「玄関の掃除してくれない？」", "いいよ", "やだ");
+                SimpleMessage("お母さん「これから仕事に行ってくるから、お昼適当に食べててね。」");
                 break;
 
             case 3:
+                MessageAndChoice2("お母さんは荷物で手がふさがっている。", "傘を持たせる", "バイバイ");
+                break;
+
+            case 4:
+                HideMotherImage();
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「ありがとう。」");
-                    AddKoukando(2);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    SimpleMessage("お母さん「雨降るの？しょうがないなぁ、持っていくわ。」");
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「もー。」");
-                    AddKoukando(-1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    SimpleMessage("お母さん「いってきます。」");
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
                 //一つ前のターンで選択肢を表示したので必ずプレイヤーの選択別に場合わけ
                 break;
 
-            case 4:
+            case 5:
+                SimpleMessage("夕方になって…");
+                break;
+
+            case 6:
+                SimpleMessage("お母さん「ただいま。」");
+                rain = Random.Range(0, 2);
+                break;
+
+            case 7:
+                ShowMotherImage();
+                if (rain > 0) //雨が降ったら
+                {
+                    if (GetPlayerChoice() == 1)
+                    {
+                        SimpleMessage("お母さん「雨降ってきたから、傘持ってきて正解だったよ。」");
+                        AddKoukando(2);
+                    }
+                    else
+                    {
+                        SimpleMessage("お母さん「帰る途中で雨降ってきちゃった…荷物濡れちゃったから拭いといて。」");
+                        AddKoukando(-2);
+                    }
+                }
+                else
+                {
+                    if (GetPlayerChoice() == 1)
+                    {
+                        SimpleMessage("お母さん「荷物が多すぎて大変だったわ。傘も使わなかったし…」");
+                        AddKoukando(-2);
+                    }
+                    else
+                    {
+                        SimpleMessage("お母さん「曇ってきたから雨が心配だったけど、降らなくてよかった。」");
+                        AddKoukando(2);
+                    }
+                }
+                break;
+
+            case 8:
                 NextDay();
                 break;
 
@@ -386,44 +423,35 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「最近天気悪いわね。」");
+                SimpleMessage("お母さん「今日は天気悪いわね。」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("お母さん「おはよう。」");
                 break;
 
             case 2:
-                MessageAndChoice3("「今日は天気が悪いみたいだから勉強でもしておきなさい」", "勉強する", "あえて外で遊ぶ", "ゲームする");
+                MessageAndChoice3("お母さん「今日は天気が悪いみたいだから勉強でもしておきなさい」", "勉強する", "あえて外で遊ぶ", "ゲームする");
                 break;
 
             case 3:
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「うん！　その方がいいわよ。」");
-                    AddKoukando(3);
-                    AddStudyKoukando(3);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
+                    SimpleMessage("お母さん「うん！　その方がいいわよ。」");
+                    AddKoukando(2);
+                    AddStudyKoukando(1);
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「馬鹿なの？」");
+                    SimpleMessage("お母さん「馬鹿なの？」");
                     AddKoukando(-1);
                     AddSportKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("スポーツパラメータ=" + GAMEMAIN.GetSportKoukando());
                 }
                 else if (GetPlayerChoice() == 3)
                 {
-                    SimpleMessage("「テストどうなっても、お母さん知らないわよ？」");
+                    SimpleMessage("お母さん「宿題どうなっても、お母さん知らないわよ？」");
                     AddKoukando(-1);
                     AddGameKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -446,44 +474,35 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「久ひぶりに晴れたわね。」");
+                SimpleMessage("お母さん「久ひぶりに晴れたわね。」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("お母さん「おはよう。」");
                 break;
 
             case 2:
-                MessageAndChoice3("「今日は天気がいいみたいだから外で遊んできなさい。」", "勉強する", "外で遊ぶ", "ゲームする");
+                MessageAndChoice3("お母さん「今日は天気がいいみたいだから外で遊んできなさい。」", "勉強する", "外で遊ぶ", "ゲームする");
                 break;
 
             case 3:
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「外で体動かしたらいいのに。」");
+                    SimpleMessage("お母さん「外で体動かしたらいいのに。」");
                     AddKoukando(-1);
                     AddStudyKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「うん！　その方がいいわよ。」");
-                    AddKoukando(3);
-                    AddSportKoukando(3);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("スポーツパラメータ=" + GAMEMAIN.GetSportKoukando());
+                    SimpleMessage("お母さん「うん！　その方がいいわよ。」");
+                    AddKoukando(2);
+                    AddSportKoukando(2);
                 }
                 else if (GetPlayerChoice() == 3)
                 {
-                    SimpleMessage("「外で体動かしたらいいのに。」");
+                    SimpleMessage("お母さん「外で体動かしたらいいのに。」");
                     AddKoukando(-1);
                     AddGameKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                    Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
                 }
                 else
                     SimpleMessage("【エラー】playerChoiceに異常あり");
@@ -506,32 +525,28 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「今日は洗濯日和！」");
+                SimpleMessage("お母さん「今日は洗濯日和！」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
+                SimpleMessage("お母さん「おはよう。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「洗濯物干しておいてくれない?」", "うん", "やだ");
+                MessageAndChoice2("お母さん「洗濯物干しておいてくれない?」", "うん", "やだ");
                 break;
 
             case 3:
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「ありがとう。」");
+                    SimpleMessage("お母さん「ありがとう。」");
                     AddKoukando(1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
 
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「そのくらいやってくれてもいいでしょ！。」");
+                    SimpleMessage("お母さん「そのくらいやってくれてもいいでしょ！。」");
                     AddKoukando(-1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
 
                 }
 
@@ -553,29 +568,29 @@ public class DayPatternController : MonoBehaviour
     // １０個目の行動パターン（この行動は母の登場はなし）
     public void DayPattern9()
     {
-        dayController.HideMotherImage(); // 母の画像を隠す
         switch (GetTurn())
         {
             case 0:
+                HideMotherImage();
                 SimpleMessage("「ひますぎてヤバイ。」");
                 break;
 
             case 1:
-                SimpleMessage("「やることないし、とりあえずゲームしよう！！。」");
+                SimpleMessage("「勉強めんどくさいし、ゲーム進めよう！」");
                 break;
 
             case 2:
-                SimpleMessage("「１日中ゲームして楽しかったー！。」");
-                AddGameKoukando(3);
-                AddStudyKoukando(-1);
-                AddSportKoukando(-1);
-
-                Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                Debug.Log("勉強パラメータ="+ GAMEMAIN.GetStudyKoukando());
-                Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
+                SimpleMessage("…………");
                 break;
 
             case 3:
+                SimpleMessage("「よし、これでアイツに勝てるぞ！」");
+                AddGameKoukando(1);
+                AddStudyKoukando(-1);
+                AddSportKoukando(-1);
+                break;
+
+            case 4:
                 NextDay();
                 break;
 
@@ -588,29 +603,29 @@ public class DayPatternController : MonoBehaviour
     // 11個目の行動パターン（この行動は母の登場はなし）
     public void DayPattern10()
     {
-        dayController.HideMotherImage();
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「やることないなー。」");
+                HideMotherImage();
+                SimpleMessage("「お母さんいないし、やることないなー。」");
                 break;
 
             case 1:
-                SimpleMessage("「勉強すればいいのか！」");
+                SimpleMessage("「宿題やっちゃうか！」");
                 break;
 
             case 2:
-                SimpleMessage("「１日中勉強して、これでテスト100点取れるぞ！！。」");
-                AddGameKoukando(-1);
-                AddStudyKoukando(3);
-                AddSportKoukando(-1);
-
-                Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-                Debug.Log("勉強パラメータ=" + GAMEMAIN.GetStudyKoukando());
-                Debug.Log("ゲームパラメータ=" + GAMEMAIN.GetGameKoukando());
+                SimpleMessage("…………");
                 break;
 
             case 3:
+                SimpleMessage("「これでテスト100点取れるぞ！！。」");
+                AddGameKoukando(-1);
+                AddStudyKoukando(1);
+                AddSportKoukando(-1);
+                break;
+
+            case 4:
                 NextDay();
                 break;
 
@@ -626,40 +641,50 @@ public class DayPatternController : MonoBehaviour
         switch (GetTurn())
         {
             case 0:
-                SimpleMessage("「買い物行っている時間ないわ。」");
-
+                SimpleMessage("お母さん「ええと、カレーに必要な材料は…」");
                 break;
 
             case 1:
-                SimpleMessage("「おはよう。」");
-
+                SimpleMessage("お母さん「玉ねぎに、人参に、ジャガイモに、豚肉に、サラダ油ね。」");
                 break;
 
             case 2:
-                MessageAndChoice2("「あとで、おつかいでじゃがいも買ってきてくれない?」", "うん", "やだ");
-
+                SimpleMessage("お母さん「シチューだったら、牛乳、小麦粉、ジャガイモ、人参、玉ねぎを使うわね。」");
                 break;
 
             case 3:
+                SimpleMessage("お母さん「オムライスなら、材料は卵と、牛乳と、鶏肉と、玉ねぎと、ケチャップと、サラダ油かな。」");
+                break;
+
+            case 4:
+                SimpleMessage("お母さん「…あ、いけない。もう出ないと。」");
+                break;
+
+            case 5:
+                SimpleMessage("お母さん「明日おつかいにいってちょうだい。覚えておいてね。」");
+                break;
+
+            case 6:
+                MessageAndChoice2("おつかいはつまんないけど…", "うん", "やだ");
+
+                break;
+
+            case 7:
                 if (GetPlayerChoice() == 1)
                 {
-                    SimpleMessage("「ありがとう。」");
+                    SimpleMessage("お母さん「ありがとう。明日お願いね。」");
                     SetOtukaiFlag(true); // フラグを回収
                     Debug.Log("GetOtukaiFlag()" + GetOtukaiFlag());
                     SetOtukaiDidFlag(0); // おつかいはまだしてない
                     AddKoukando(1);
 
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
-
                 }
                 else if (GetPlayerChoice() == 2)
                 {
-                    SimpleMessage("「そのくらいやってくれてもいいでしょ！。」");
-                    SetOtukaiFlag(false);
+                    SimpleMessage("お母さん「だめ。ちゃんと行ってきて。」");
+                    SetOtukaiFlag(true);
                     //SetOtukaiDidFlag(0);
                     AddKoukando(-1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
 
                 }
                 else
@@ -668,7 +693,7 @@ public class DayPatternController : MonoBehaviour
                 }
                 break;
 
-            case 4:
+            case 8:
                 NextDay();
                 break;
 
@@ -682,36 +707,37 @@ public class DayPatternController : MonoBehaviour
     // お店の画像に差し替えて欲しい
     public void DayPattern12() // 母はこのパートには、登場しない
     {
-        dayController.HideMotherImage(); // 母を画像を消す
-
         //otukaiDidFlag 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
         if ((GetOtukaiFlag() == true) && (GetOtukaiDidFlag() == 0))
         {
             switch (GetTurn())
             {
                 case 0: // 自宅で登場は主人公だけ
-                    SimpleMessage("「今日は頼まれていたおつかいに行こうか。」");
+                    HideMotherImage();
+                    SimpleMessage("今日は頼まれていたおつかいに行こうか。");
+                    break;
+
+                case 1:
+                    SimpleMessage("キッチンには、サラダ油、ジャガイモ、人参、玉ねぎが置いてある…");
                     break;
 
                 // ここで場面は、お店に変わる。
-                case 1:
-                    back_SupermarketImage.transform.position = vector3;
-                    back_HouseImage.transform.position = vector3House;
-                    SimpleMessage("「いらっしゃいませ！！！」"); // 商店街の店主
-
-                    break;
-
                 case 2:
+                    ShowBackImage(3);
+                    SimpleMessage("いつものスーパーに来た。"); // 商店街の店主
+                    break;
+
+                case 3:
                     // 店主
-                    MessageAndChoice4("「何を買いますか？」", "だいこん", "じゃがいも", "さかな", "サツマイモ");
+                    MessageAndChoice4("何を買おうかな？", "牛乳", "豚肉", "鶏肉", "玉ねぎ");
 
                     break;
 
-                case 3: // otukaiDidFlag 1:間違ったものを買った 2:正しいものを買った
+                case 4: // otukaiDidFlag 1:間違ったものを買った 2:正しいものを買った
                     //SimpleMessage("表示テスト");
                     if (GetPlayerChoice() == 1)
                     {
-                        SimpleMessage("「ありがとうございます！！」");
+                        SimpleMessage("「牛乳を買った。これでいいんだよね。」");
                         SetOtukaiDidFlag(1);
                         SetOtukaiFlag(true);
                         Debug.Log("turn=" + GetTurn());
@@ -720,7 +746,7 @@ public class DayPatternController : MonoBehaviour
 
                     else if (GetPlayerChoice() == 2)
                     {
-                        SimpleMessage("「ありがとうございます！！」");
+                        SimpleMessage("「豚肉を買った。これでいいんだよね。」");
                         SetOtukaiDidFlag(2);
                         Debug.Log("OtukaiDidFlag=" + GetOtukaiDidFlag());
                         SetOtukaiFlag(true);
@@ -729,7 +755,7 @@ public class DayPatternController : MonoBehaviour
                     }
                     else if (GetPlayerChoice() == 3)
                     {
-                        SimpleMessage("「ありがとうございます！！」");
+                        SimpleMessage("「鶏肉を買った。これでいいんだよね。」");
                         SetOtukaiDidFlag(1);
                         SetOtukaiFlag(true);
                         Debug.Log("turn=" + GetTurn());
@@ -737,7 +763,7 @@ public class DayPatternController : MonoBehaviour
                     }
                     else if (GetPlayerChoice() == 4)
                     {
-                        SimpleMessage("「ありがとうございます！！」");
+                        SimpleMessage("「玉ねぎを買った。これでいいんだよね。」");
                         SetOtukaiDidFlag(1);
                         SetOtukaiFlag(true);
                         Debug.Log("turn=" + GetTurn());
@@ -750,15 +776,14 @@ public class DayPatternController : MonoBehaviour
 
                     break;
 
-                case 4:
-                    NextDay();// 到達できない
+                case 5:
+                    NextDay();// 到達できない //到達できた
                     break;
 
-                default: //if文あると、なぜかここに引っかかる！！！！！ なんで！？
+                default: //if文あると、なぜかここに引っかかる！！！！！ なんで！？ //引っ掛からなくなった
                     Debug.Log("GetTurn()=" + GetTurn());
                     SimpleMessage("【エラー】このターンに何も割り当てられていません(おつかいパート)");
                     NextDay();
-
 
                     break;
             }
@@ -773,12 +798,46 @@ public class DayPatternController : MonoBehaviour
             switch (GetTurn())
             {
                 case 0:
-                    SimpleMessage("おつかいイベントのフラグを回収できませんでした。");
+                    SimpleMessage("お母さん「クリスマスプレゼントはどんなものが欲しいの？」");
                     break;
                 case 1:
-                    SimpleMessage("「もー。なんでおつかい行ってくれない」");
+                    MessageAndChoice4("何が欲しいかな？","ゲーム機","問題集","新しいボール","なんでもいい");
                     break;
+
                 case 2:
+                    SimpleMessage("お母さん「ふーんそうなんだ。」");
+
+                    if (GetPlayerChoice() == 1)
+                    {
+                        AddGameKoukando(1);
+                        AddStudyKoukando(-1);
+                        AddSportKoukando(-1);
+                    }
+                    else if (GetPlayerChoice() == 2)
+                    {
+                        AddGameKoukando(-1);
+                        AddStudyKoukando(1);
+                        AddSportKoukando(-1);
+                    }
+                    else if (GetPlayerChoice() == 3)
+                    {
+                        AddGameKoukando(-1);
+                        AddStudyKoukando(-1);
+                        AddSportKoukando(1);
+                    }
+                    else if (GetPlayerChoice() == 4)
+                    {
+                        AddGameKoukando(-2);
+                        AddStudyKoukando(-2);
+                        AddSportKoukando(-2);
+                    }
+                    break;
+
+                case 3:
+                    SimpleMessage("お母さん「別にお母さんはサンタさんじゃないんだけどね。」");
+                    break;
+
+                case 4:
                     NextDay();
                     break;
                 default:
@@ -788,10 +847,8 @@ public class DayPatternController : MonoBehaviour
         }
 
         // 緊急脱出
-        if(GetTurn() == 4)
-        {
+        if (GetTurn() >= 5)
             NextDay();
-        }
 
     }
 
@@ -803,34 +860,38 @@ public class DayPatternController : MonoBehaviour
             switch (GetTurn())
             {
                 case 0:
-                    SimpleMessage("「そう言えば、この前おつかい頼んでいたわよね？」");
+                    SimpleMessage("お母さん「ただいま。おつかい行ってくれた？」");
                     break;
 
                 case 1:
-                    SimpleMessage("「この前、頼んだおつかい行ってくれたのね!!!。」");
-
+                    SimpleMessage("お母さん「何買うか言うの忘れてたけど、ちゃんと行ってきたのね。えらい。」");
                     break;
 
                 case 2:
+                    SimpleMessage("お母さん「これは…」");
+                    break;
+
+                case 3:
                     if (GetOtukaiDidFlag() == 2)
                     {
-                        SimpleMessage("「ちゃんとジャガイモ買ってきてくれたのね!!」");
-                        AddKoukando(5);
-
-                        Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                        SimpleMessage("お母さん「そう！豚肉が欲しかったの！よくわかったわね！」");
+                        AddKoukando(3);
                     }
                     else if (GetOtukaiDidFlag() == 1)
                     {
-                        SimpleMessage("「頼んでいたものと違うじゃない!!」");
-                        AddKoukando(-5);
-
-                        Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                        SimpleMessage("お母さん「あら、本当は豚肉が欲しかったんだけどね。まあ、しょうがないわね。」");
+                        AddKoukando(1);
                     }
 
                     break;
 
-                case 3:
+                case 4:
+                    SimpleMessage("お母さん「おつかい行ってきてくれたから、今日はカレーにするね。」");
+                    break;
+
+                case 5:
                     NextDay();
+                    SetIsOtukaiDone();
                     break;
 
                 default:
@@ -840,28 +901,176 @@ public class DayPatternController : MonoBehaviour
         }
         else
         {
-            Debug.Log("おつかい判定パートotukaiFlag" + GetOtukaiFlag());
-            Debug.Log("おつかい判定パートotukaiDidFlag" + GetOtukaiDidFlag());
             switch (GetTurn())
-            {
-                case 0:
-                    SimpleMessage("おつかい判定パートでエラー。");
+            {                                                                                                                                                                              
+                case 0:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                    SimpleMessage("お母さん「洗濯物片付けなきゃ。」");
                     break;
                 case 1:
-                    SimpleMessage("「今度、おつかい行っておいで。」");
-                    AddKoukando(-1);
-
-                    Debug.Log("母の好感度=" + GAMEMAIN.GetKoukando());
+                    SimpleMessage("お母さん「ちょっと、掃除手伝ってくれない？」");
                     break;
                 case 2:
+                    MessageAndChoice2("いま宿題やってる最中だけど…", "うん", "やだ");
+                    break;
+                case 3:
+                    if(GetPlayerChoice() == 1)
+                    {
+                        SimpleMessage("お母さん「ついでに自分の部屋も片付けてきたら？」");
+                        AddKoukando(1);
+                        AddStudyKoukando(-1);
+                    }
+                    else
+                    {
+                        SimpleMessage("お母さん「しょうがないわね。いつか手伝ってよ。」");
+                        AddKoukando(-1);
+                        AddStudyKoukando(1);
+                    }
+                    break;
+                case 4:
                     NextDay();
                     break;
                 default:
-                    SimpleMessage("【エラー】このターンに何も割り当てられていません(おつかい判定パート)");
+                    SimpleMessage("");
                     break;
             }
         }
 
+    }
+
+    public void DayPattern14()
+    {
+        switch (GetTurn())
+        {
+            case 0:
+                SimpleMessage("お母さん「お友達が遊びにきてるよ。」");
+                break;
+
+            case 1:
+                SimpleMessage("友達「よお。一緒に遊ぼうぜ。」");
+                break;
+
+            case 2:
+                MessageAndChoice3("どうする？", "一緒に宿題", "公園に行く", "ゲームする");
+                break;
+
+            case 3:
+                if(GetPlayerChoice() == 1)
+                {
+                    SimpleMessage("友達「エー。まだ終わってないのかよ。」");
+                    AddStudyKoukando(2);
+                    AddSportKoukando(-2);
+                    AddGameKoukando(-2);
+                }
+                else if(GetPlayerChoice() == 2)
+                {
+                    SimpleMessage("友達「サッカーボール持ってこいよ！」");
+                    AddSportKoukando(2);
+                    AddStudyKoukando(-2);
+                    AddGameKoukando(-2);
+                }
+                else if(GetPlayerChoice() == 3)
+                {
+                    SimpleMessage("友達「よし、俺と対戦だ！」");
+                    AddGameKoukando(2);
+                    AddStudyKoukando(-2);
+                    AddSportKoukando(-2);
+                }
+                break;
+
+            case 4:
+                NextDay();
+                break;
+        }
+    }
+
+    public void DayPattern15()
+    {
+        switch (GetTurn())
+        {
+            case 0:
+                HideMotherImage();
+                SimpleMessage("「すごく天気いいな。」");
+                break;
+
+            case 1:
+                SimpleMessage("「あったかそうだし、あっちの大きい公園に行ってみよう。」");
+                break;
+
+            case 2:
+                ShowBackImage(2);
+                SimpleMessage("…………");
+                break;
+
+            case 3:
+                SimpleMessage("「学校の友達が集まってた！みんなで公園の周りで競争した。」");
+                AddGameKoukando(-1);
+                AddStudyKoukando(-1);
+                AddSportKoukando(2);
+                break;
+
+            case 4:
+                NextDay();
+                break;
+
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+        }
+    }
+
+    public void DayPattern16()
+    {
+        switch (GetTurn())
+        {
+            case 0:
+                HideMotherImage();
+                ShowBackImage(2);
+                SimpleMessage("公園にきた。");
+                break;
+
+            case 1:
+                SimpleMessage("友達「あっちょっと今日の宿題教えてよ。」");
+                break;
+
+            case 2:
+                MessageAndChoice2("うーんどうしよう？", "いいよ", "やだ");
+                break;
+
+            case 3:
+                if(GetPlayerChoice() == 1)
+                {
+                    SimpleMessage("友達「じゃあ俺んち行こう。」");
+                    AddStudyKoukando(1);
+                    AddSportKoukando(-1);
+                }
+                else if (GetPlayerChoice() == 2)
+                {
+                    SimpleMessage("友達「じゃあサッカー特訓だな。」");
+                    AddStudyKoukando(-1);
+                    AddSportKoukando(2);
+                }
+                break;
+
+            case 4:
+                if (GetPlayerChoice() == 1)
+                {
+                    SimpleMessage("宿題が終わったらずっとゲームをしていた。");
+                    AddGameKoukando(1);
+                }
+                else
+                {
+                    SimpleMessage("今日はいい練習ができた。");
+                }
+                break;
+
+            case 5:
+                NextDay();
+                break;
+
+            default:
+                SimpleMessage("【エラー】このターンに何も割り当てられていません");
+                break;
+        }
     }
 }
 

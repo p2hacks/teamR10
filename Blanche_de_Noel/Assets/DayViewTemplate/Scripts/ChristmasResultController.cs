@@ -136,17 +136,29 @@ public class ChristmasResultController : MonoBehaviour
                 break;
             case 2:
                 messageText.SetActive(true);
-                SimpleMessage("クリスマスプレゼントよ！");
+                SimpleMessage("お母さん「今日はクリスマスだね。」");
                 break;
             case 3:
+                if(GAMEMAIN.GetKoukando() > 0)
+                {
+                    SimpleMessage("お母さん「最近いい子にしてたから…」");
+                } else
+                {
+                    SimpleMessage("お母さん「最近はあまりいい子じゃなかったけど…」");
+                }
+                break;
+            case 4:
+                SimpleMessage("サンタさんからプレゼントが届いたわよ！");
+                break;
+            case 5:
                 DisableNextButton();
                 present_move();
                 break;
-            case 4:
+            case 6:
                 DisableNextButton();
                 present_open();
                 break;
-            case 5:
+            case 7:
                 // SimpleMessage("ベンツだ！！");
                 // GameObject.Find("Gradation").GetComponent<GradationFadeController>().FadeScreenTo(50);
                 SceneManager.LoadScene("ResultScene");

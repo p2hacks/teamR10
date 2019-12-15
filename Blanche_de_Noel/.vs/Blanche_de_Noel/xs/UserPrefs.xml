@@ -1,43 +1,16 @@
 ﻿<Properties StartupConfiguration="{4246EA8D-75C6-4037-09A4-B1682FDE5CF3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DayViewTemplate/Scripts/DayPatternController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DayViewTemplate/Scripts/ChristmasResultController.cs">
     <Files>
-      <File FileName="Assets/TitleView/Scripts/GAMEMAIN.cs" Line="7" Column="36" />
-      <File FileName="Assets/ResultView/Scripts/ResultSceneController.cs" Line="72" Column="6" />
-      <File FileName="Assets/DayViewTemplate/Scripts/DayController.cs" Line="1" Column="1" />
-      <File FileName="Assets/DayViewTemplate/Scripts/DayPatternController.cs" Line="16" Column="48" />
-      <File FileName="Assets/DifficultyLevelView/Scripts/ChooseDifficultyController.cs" Line="1" Column="1" />
+      <File FileName="Assets/TitleView/Scripts/GAMEMAIN.cs" Line="70" Column="1" />
+      <File FileName="Assets/ResultView/Scripts/ResultSceneController.cs" Line="437" Column="1" />
+      <File FileName="Assets/DayViewTemplate/Scripts/DayController.cs" Line="425" Column="38" />
+      <File FileName="Assets/DayViewTemplate/Scripts/DayPatternController.cs" Line="1052" Column="23" />
+      <File FileName="Assets/DayViewTemplate/Scripts/ChristmasResultController.cs" Line="135" Column="39" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Blanche_de_Noel" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="DayViewTemplate" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="DayPatternController.cs" selected="True" />
-                </Node>
-              </Node>
-              <Node name="DifficultyLevelView" expanded="True">
-                <Node name="Scripts" expanded="True" />
-              </Node>
-              <Node name="InfoView" expanded="True">
-                <Node name="Scripts" expanded="True" />
-              </Node>
-              <Node name="ResultView" expanded="True">
-                <Node name="Scripts" expanded="True" />
-              </Node>
-              <Node name="TitleView" expanded="True">
-                <Node name="Scripts" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ce6f1ac2-38b4-4072-a7b7-a05f6ca8312d" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d323d099-d214-4e67-8ea5-855afb99725e" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

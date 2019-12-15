@@ -20,4 +20,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ResultView/ResultScene.unity
     guid: 3c246139941304750b71591fd03983aa
+  - enabled: 1
+    path: Assets/ResultView/ResultStar0Scene/ResultStar0.unity
+    guid: d27282db9f0a240cfa9af1cb021b01ad
+  - enabled: 1
+    path: Assets/ResultView/ResultStar1Scene/ResultStar1.unity
+    guid: e9ab79362c51f491f9acc406e86c1316
+  - enabled: 1
+    path: Assets/ResultView/ResultStar2Scene/ResultStar2.unity
+    guid: 394e66a7c903f47dcb44f7935c45ee5e
+  - enabled: 1
+    path: Assets/ResultView/ResultStar3Scene/ResultStar3.unity
+    guid: c6df835591eb04e78be0cda18f5d14f5
+  - enabled: 1
+    path: Assets/ResultView/ResultStar4Scene/ResultStar4.unity
+    guid: 927598fee9dc34e6d8690a932450903b
+  - enabled: 1
+    path: Assets/ResultView/ResultStar5Scene/ResultStar5.unity
+    guid: d401115f11e8c4349a2e7861b33f4b02
+  - enabled: 1
+    path: Assets/ResultView/ResultStar6Scene/ResultStar6.unity
+    guid: 1a5f6b5fc549d45559b2b17cceb60330
   m_configObjects: {}

@@ -17,7 +17,7 @@ using UnityEngine.UI;
 public class DayController : MonoBehaviour
 {
     /**********今現在の1日パターンの作成された個数 * 追加され次第数を加える*************/
-    int numOfDayPattern = 9;
+    int numOfDayPattern = 17;
 
     //DayPatternController dayPatternController; //DayControllerが不安定な時の避難用
 
@@ -34,6 +34,7 @@ public class DayController : MonoBehaviour
 
     private bool otukaiFlag; // おつかいイベントを発生させるか判定(フラグを回収したかどうか)
     private int otukaiDidFlag; // 正しくおつかいをしているか判定 0:買い物をいていない、1:間違ったものを買った、　2:正しいものを買った
+    private bool isOtukaiDone = false;
 
     GameObject messageText;
     Button nextButton;
@@ -181,6 +182,18 @@ public class DayController : MonoBehaviour
                         dayPatternController.DayPattern10();
                         break;
 
+                    case 10:
+                        dayPatternController.DayPattern14();
+                        break;
+
+                    case 11:
+                        dayPatternController.DayPattern15();
+                        break;
+
+                    case 12:
+                        dayPatternController.DayPattern16();
+                        break;
+
                     default:
                         DayPatternError();
                         break;
@@ -205,6 +218,7 @@ public class DayController : MonoBehaviour
 
     public bool GetOtukaiFlag() => this.otukaiFlag;
     public void SetOtukaiFlag(bool flag) => this.otukaiFlag = flag;
+    public void SetIsOtukaiDone() => isOtukaiDone = true;
 
     public int GetOtukaiDidFlag() => this.otukaiDidFlag;
     public void SetOtukaiDidFlag(int n) => this.otukaiDidFlag = n;
@@ -341,7 +355,15 @@ public class DayController : MonoBehaviour
         if (GradationFadeController.GetFadeX() <= 0 && GradationFadeController.GetFadeX() >= -2.0)
         {
             playerChoice = 0;
-            randomPattern = Random.Range(0, numOfDayPattern); //次の1日の流れパターンをランダムに決定する
+
+            while (true)
+            {
+                randomPattern = Random.Range(0, numOfDayPattern - 4); //次の1日の流れパターンをランダムに決定する
+                if (isOtukaiDone && randomPattern == 12)
+                    continue;
+                break;
+            }
+
             turn = 0;
             day++;
             GAMEMAIN.SetDay(1);
